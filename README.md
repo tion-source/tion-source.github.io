@@ -1,1 +1,403 @@
-# tion.github.io
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TION LAB — 션</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #F5F2EC;
+    --card:      #EDEAE2;
+    --card-hover:#E5E1D8;
+    --border:    #D6D2C8;
+    --text:      #1A1A18;
+    --sub:       #5C5C52;
+    --muted:     #8A8A7E;
+    --accent:    #2a2729;
+    --accent-bg: #f5cded;
+    --accent-lt: #f59e9e;
+    --mono:      'JetBrains Mono', monospace;
+    --sans:      'Inter', sans-serif;
+  }
+
+  html { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
+
+  /* ── Layout ── */
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 0;
+    max-width: 1000px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    padding: 2.5rem 1.5rem 2.5rem 2rem;
+    border-right: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .lab-badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    background: var(--accent-bg);
+    border: 1px solid var(--accent-lt);
+    border-radius: 4px;
+    padding: 3px 8px;
+    width: fit-content;
+  }
+
+  .avatar-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-lt) 0%, var(--accent-bg) 100%);
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--accent);
+    letter-spacing: -1px;
+  }
+
+  .name-ko { font-size: 18px; font-weight: 600; color: var(--text); }
+  .name-en { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: 1px; }
+
+  .bio {
+    font-size: 13px;
+    color: var(--sub);
+    line-height: 1.65;
+    border-left: 2px solid var(--accent-lt);
+    padding-left: 10px;
+  }
+
+  .sidebar-section { display: flex; flex-direction: column; gap: 0.4rem; }
+  .sidebar-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .link-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--sub);
+    text-decoration: none;
+    padding: 4px 0;
+    transition: color 0.15s;
+  }
+  .link-item:hover { color: var(--accent); }
+  .link-icon { width: 16px; text-align: center; opacity: 0.6; flex-shrink: 0; }
+
+  .sidebar-footer {
+    margin-top: auto;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+  }
+
+  /* ── Main ── */
+  .main { padding: 2.5rem 2.5rem 4rem; display: flex; flex-direction: column; gap: 2.5rem; }
+
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .section-line { flex: 1; height: 1px; background: var(--border); }
+
+  /* README block */
+  .readme {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .readme-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+  .readme-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); }
+  .readme-filename { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .readme-body { padding: 1.25rem 1.5rem; }
+  .readme-body h1 { font-family: var(--mono); font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+  .readme-body p { font-size: 13.5px; color: var(--sub); line-height: 1.7; margin-bottom: 0.75rem; }
+  .readme-body p:last-child { margin-bottom: 0; }
+
+  /* Research tags */
+  .tag-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    background: var(--accent-bg);
+    border: 1px solid var(--accent-lt);
+    border-radius: 4px;
+    padding: 4px 10px;
+    transition: background 0.15s, border-color 0.15s;
+    cursor: default;
+  }
+  .tag:hover { background: var(--accent-lt); border-color: var(--accent); }
+
+  /* Project cards */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: background 0.15s, border-color 0.15s;
+    text-decoration: none;
+  }
+  .card:hover { background: var(--card-hover); border-color: #C0BDB3; }
+  .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+  .card-icon { font-size: 15px; }
+  .card-lang {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 6px;
+  }
+  .card-name { font-size: 14px; font-weight: 600; color: var(--accent); }
+  .card-desc { font-size: 12.5px; color: var(--sub); line-height: 1.55; }
+  .card-stats { display: flex; gap: 12px; margin-top: 4px; }
+  .card-stat { font-family: var(--mono); font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 4px; }
+
+  /* Activity graph placeholder */
+  .activity-wrap {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+  }
+  .activity-label { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 0.75rem; }
+  .contrib-grid { display: flex; gap: 3px; }
+  .contrib-col { display: flex; flex-direction: column; gap: 3px; }
+  .contrib-cell {
+    width: 11px; height: 11px; border-radius: 2px;
+    background: var(--border);
+  }
+  .contrib-cell.l1 { background: var(--accent-bg); }
+  .contrib-cell.l2 { background: var(--accent-lt); }
+  .contrib-cell.l3 { background: #74C69D; }
+  .contrib-cell.l4 { background: var(--accent); }
+
+  /* Responsive */
+  @media (max-width: 680px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); padding: 2rem 1.5rem; flex-direction: row; flex-wrap: wrap; gap: 1.5rem; }
+    .avatar-wrap { flex-direction: row; align-items: center; gap: 1rem; }
+    .main { padding: 1.5rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar">
+    <div class="lab-badge">TION LAB</div>
+
+    <div class="avatar-wrap">
+      <div class="avatar">😈</div>
+      <div>
+        <div class="name-ko"> 박시현· SIHYEON PARK</div>
+      </div>
+    </div>
+
+    <p class="bio">Thinking In Open Nature</p>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Links</div>
+      <a class="link-item" href="https://github.com" target="_blank">
+        <span class="link-icon">⌥</span> GitHub
+      </a>
+      <a class="link-item" href="https://notion.so" target="_blank">
+        <span class="link-icon">◻</span> Notion
+      </a>
+      <a class="link-item" href="mailto:hello@tion.dev">
+        <span class="link-icon">@</span> Email
+      </a>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Location</div>
+      <span class="link-item"><span class="link-icon">◎</span> Seoul, Korea</span>
+    </div>
+
+    <div class="sidebar-footer">© 2026 TION LAB</div>
+  </aside>
+
+  <!-- ── Main ── -->
+  <main class="main">
+
+    <!-- README -->
+    <section>
+      <div class="readme">
+        <div class="readme-header">
+          <div class="readme-dot"></div> 
+          <div class="readme-dot"></div>
+          <div class="readme-dot"></div>
+          <span class="readme-filename"></span>
+        </div>
+        <div class="readme-body">
+          <h1>Hello, My name is Sihyeon Park 👋</h1>
+          <p>Physical AI와 로보틱스를 연구합니다. 시뮬레이터에서 학습한 로봇이 현실 세계에서도 작동하게 만드는 것 — Sim2Real 갭을 줄이는 게 제 주된 관심사예요.</p>
+          <p>현재 OmniLRS 프로젝트에서 달 표면 탐사 로버(HSU Rover)를 Isaac Sim과 ROS2 Humble로 개발하고 있습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research Interests -->
+    <section>
+      <div class="section-head">
+        <span class="section-title">Research Interests</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="tag-grid">
+        <span class="tag">Physical AI</span>
+        <span class="tag">Robotics</span>
+        <span class="tag">Robot Learning</span>
+        <span class="tag">Mobile Robotics</span>
+        <span class="tag">Navigation</span>
+        <span class="tag">Motion Planning</span>
+        <span class="tag">Sim2Real</span>
+        <span class="tag">Space Robotics</span>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section>
+      <div class="section-head">
+        <span class="section-title">Projects</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="card-grid">
+        <a class="card" href="#">
+          <div class="card-top">
+            <span class="card-icon">🛰️</span>
+            <span class="card-lang">Python · ROS2</span>
+          </div>
+          <div class="card-name">OmniLRS · HSU Rover</div>
+          <div class="card-desc">달 표면 로보틱스 시뮬레이터. Isaac Sim 기반, ROS2 Humble 연동.</div>
+          <div class="card-stats">
+            <span class="card-stat">★</span>
+            <span class="card-stat">⑂</span>
+          </div>
+        </a>
+        <a class="card" href="#">
+          <div class="card-top">
+            <span class="card-icon">🧭</span>
+            <span class="card-lang">C++ · ROS2</span>
+          </div>
+          <div class="card-name">Nav Stack</div>
+          <div class="card-desc">비구조적 지형에서의 모바일 로봇 내비게이션 연구.</div>
+          <div class="card-stats">
+            <span class="card-stat">★</span>
+            <span class="card-stat">⑂</span>
+          </div>
+        </a>
+        <a class="card" href="#">
+          <div class="card-top">
+            <span class="card-icon">🤖</span>
+            <span class="card-lang">Python</span>
+          </div>
+          <div class="card-name">Sim2Real Transfer</div>
+          <div class="card-desc">Domain randomization을 통한 Sim2Real 갭 최소화 실험.</div>
+          <div class="card-stats">
+            <span class="card-stat">★</span>
+            <span class="card-stat">⑂</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    
+
+  </main>
+</div>
+
+<script>
+  const grid = document.getElementById('graph');
+  const levels = ['','l1','l2','l3','l4'];
+  const weights = [0.45, 0.25, 0.15, 0.1, 0.05];
+
+  function pick() {
+    const r = Math.random();
+    let cum = 0;
+    for (let i = 0; i < weights.length; i++) {
+      cum += weights[i];
+      if (r < cum) return levels[i];
+    }
+    return '';
+  }
+
+  for (let w = 0; w < 52; w++) {
+    const col = document.createElement('div');
+    col.className = 'contrib-col';
+    for (let d = 0; d < 7; d++) {
+      const cell = document.createElement('div');
+      cell.className = 'contrib-cell ' + pick();
+      col.appendChild(cell);
+    }
+    grid.appendChild(col);
+  }
+</script>
+</body>
+</html>
