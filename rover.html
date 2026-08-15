@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rover — Tion LAB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #F5F2EC; --card: #EDEAE2; --card-hover: #E5E1D8;
+    --border: #D6D2C8; --text: #1A1A18; --sub: #5C5C52;
+    --muted: #8A8A7E; --accent: #2D6A4F; --accent-bg: #EBF4EF;
+    --accent-lt: #B7D8C7; --mono: 'JetBrains Mono', monospace; --sans: 'Inter', sans-serif;
+  }
+  html { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
+  .page { max-width: 800px; margin: 0 auto; padding: 2.5rem 2rem 5rem; }
+  .back { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 12px; color: var(--muted); text-decoration: none; margin-bottom: 2rem; transition: color 0.15s; }
+  .back:hover { color: var(--accent); }
+  .page-header { margin-bottom: 2.5rem; }
+  .page-icon { font-size: 36px; margin-bottom: 0.75rem; }
+  .page-title { font-family: var(--mono); font-size: 26px; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+  .page-sub { font-size: 14px; color: var(--sub); }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+  .project-block { margin-bottom: 2rem; }
+  .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+  .project-meta { display: flex; flex-direction: column; gap: 4px; }
+  .project-period { font-family: var(--mono); font-size: 11px; color: var(--muted); background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 2px 8px; width: fit-content; }
+  .project-name { font-size: 16px; font-weight: 600; color: var(--text); margin-top: 4px; }
+  .badge-award { font-family: var(--mono); font-size: 11px; color: #92400e; background: #FEF3C7; border: 1px solid #FDE68A; border-radius: 4px; padding: 3px 8px; white-space: nowrap; }
+  .project-desc { font-size: 13.5px; color: var(--sub); line-height: 1.75; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; }
+  .project-desc strong { color: var(--text); font-weight: 600; }
+  .section-label { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+</style>
+</head>
+<body>
+<div class="page">
+  <a class="back" href="index.html">← Tion LAB</a>
+
+  <div class="page-header">
+    <div class="page-icon">🛰️</div>
+    <div class="page-title">Rover</div>
+    <div class="page-sub">달 탐사 로버 시뮬레이션 · 디지털 트윈 · Space Robotics</div>
+  </div>
+
+  <div class="section-label">Projects & Achievements</div>
+
+  <!-- Project 1 -->
+  <div class="project-block">
+    <div class="project-header">
+      <div class="project-meta">
+        <span class="project-period">2025 여름</span>
+        <div class="project-name">현대자동차 산학협력 — 우주탐사 유무인 모빌리티 요구사항 및 서비스 시나리오 도출</div>
+      </div>
+    </div>
+    <div class="project-desc">
+      달 탐사 로버 및 화성 탐사 로버 국내외 기술동향 분석을 수행하고, 타행성 탐사 분야에서 우리 대학의 특성화 분야로 추진할 기술 분야를 도출하는 등 <strong>기술적 측면의 성과를 도출</strong>하였습니다.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Project 2 -->
+  <div class="project-block">
+    <div class="project-header">
+      <div class="project-meta">
+        <span class="project-period">2026-1</span>
+        <div class="project-name">DEM 기반 3D 달 지형 생성 및 Isaac Sim 로봇 주행 시뮬레이션</div>
+      </div>
+      <span class="badge-award">🏆 성과공유회 최우수상</span>
+    </div>
+    <div class="project-desc">
+      지형 데이터 학습부터 Husky UGV 물리 시뮬레이션 검증까지의 <strong>End-to-End 파이프라인</strong>을 완성하였습니다. DEM(Digital Elevation Model) 데이터를 기반으로 달 표면 3D 지형을 생성하고, Isaac Sim 환경에서 로봇 주행 시뮬레이션을 구현하였습니다.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Project 3 -->
+  <div class="project-block">
+    <div class="project-header">
+      <div class="project-meta">
+        <span class="project-period">2026.04 ~</span>
+        <div class="project-name">현대자동차 산학협력 — 달 탐사 로버 시뮬레이션을 위한 달 표면 디지털 트윈 구축</div>
+      </div>
+    </div>
+    <div class="project-desc">
+      <strong>학부연구생 팀장</strong>으로서 달 표면 디지털 트윈 구축 프로젝트를 진행 중입니다. 현대자동차와의 산학협력 과제로, 달 탐사 로버의 실제 임무 수행을 위한 고정밀 시뮬레이션 환경 개발을 목표로 하고 있습니다.
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
