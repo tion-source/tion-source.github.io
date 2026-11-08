@@ -132,3 +132,11 @@ a { color: inherit; }
 .name .nick { font-weight: 400; color: var(--muted); }
 .motto { font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: 0.02em; margin-top: -0.9rem; }
 .motto b { font-size: 14px; font-weight: 700; color: var(--violet); }
+
+/* Research areas */
+.area-items { padding-left: 1.1rem; margin: 0.35rem 0 0.6rem; }
+.area-items li { font-size: 13px; color: var(--sub); line-height: 1.7; }
+.area-items b { color: var(--text); font-weight: 600; }
+.ptags { display: flex; flex-wrap: wrap; gap: 6px; }
+.ptag { font-family: var(--mono); font-size: 11px; color: var(--violet); background: var(--accent-bg); border: 1px solid var(--accent-lt); border-radius: 4px; padding: 1px 8px; }
+.team { font-size: 12px; font-weight: 400; color: var(--muted); }
