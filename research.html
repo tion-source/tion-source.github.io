@@ -27,19 +27,37 @@
     <div class="sidebar-footer">© 2026 TION LAB</div>
   </aside>
   <main class="main">
-    <header class="page-header">
-      <h1 class="page-title">연구분야</h1>
-      <p class="page-sub">지금 연구하고 있는 것</p>
+    <header class="rhead">
+      <h1 class="rtitle">연구분야 <span>(Research Areas)</span></h1>
+      <p class="rintro">바퀴 달린 로봇의 메커니즘 설계, 시뮬레이션 검증, 실물 주행을 하나의 흐름으로 연결합니다. <strong>직접 만들고, 검증하고, 수치로 증명하는 것</strong>을 연구합니다.</p>
     </header>
-    <section>
-      <div class="section-head"><span class="section-title">Research Areas</span><div class="section-line"></div></div>
-      <div class="area-list">
-        <div class="area"><div class="area-name">이동 로봇 메커니즘 설계·제작</div><ul class="area-items"><li><b>KSRC</b> — UWB 앵커 투하 메커니즘 (서보 90° 해제 → 중력 낙하)</li><li><b>KSRC</b> — 바요넷 체결 앵커 하우징 설계 (Fusion 360)</li><li><b>KSRC</b> — 로버 차체 설계·제작 (휠 제외)</li><li><b>HSU 이동플랫폼</b> — 자작 전기차 플랫폼 2대 제작</li></ul><div class="ptags"><span class="ptag">#단순하고 확실한 전개 구조</span><span class="ptag">#3D 프린팅 반복 설계</span><span class="ptag">#실물 주행 검증</span></div></div>
-        <div class="area"><div class="area-name">자가 설치형 위치 추정 시스템 <span class="team">(팀)</span></div><ul class="area-items"><li><b>KSRC</b> — 로버가 UWB 앵커를 직접 설치하고 IMU와 결합해 3차원 위치 추정</li><li>시뮬레이션 기준 위치 오차 2~7 cm</li></ul><div class="ptags"><span class="ptag">#기준점 없는 환경에서 위치 찾기</span></div></div>
-        <div class="area"><div class="area-name">로봇 시뮬레이션 · HILS</div><ul class="area-items"><li><b>L-Project</b> — 12축 로버 USD 모델 구성 (조인트·드라이브·질량)</li><li><b>L-Project</b> — Isaac Sim ↔ Jetson 연동</li><li><b>L-Project</b> — 실시간 지형 변형 엔진: 주행 RTF 0.008 → 0.5, 자국 형상이 휠 기하와 1~3 % 일치</li></ul><div class="ptags"><span class="ptag">#실물 같은 주행 시뮬레이션</span><span class="ptag">#실시간성</span><span class="ptag">#시뮬레이션–실물 연결</span></div></div>
-        <div class="area"><div class="area-name">Robot Learning</div><ul class="area-items"><li><b>LeRobot SO-ARM</b> — Teleoperation + Imitation Learning(ACT), 성과공유회 최우수상(1위)</li></ul><div class="ptags"><span class="ptag">#시연 데이터로 배우는 로봇</span></div></div>
-      </div>
-
+    <section class="rarea">
+      <h2 class="rarea-title"><span class="rarea-icon">⚙</span>Area 01 · Mechanism Design</h2>
+      <p class="rarea-lead">움직이는 로봇의 메커니즘을 직접 설계·제작하고, 실물 주행으로 검증합니다.</p>
+        <div class="rgrid">
+          <div class="rcard"><div class="rcard-title">Deployable Mechanism</div><p>서보 해제와 중력 낙하를 이용한 전개 구조.<br>주행 중 장비를 투하·설치하는 단순한 메커니즘.</p></div>
+          <div class="rcard"><div class="rcard-title">Enclosure &amp; Fastening</div><p>바요넷 체결 하우징 설계.<br>현장에서 빠르게 열고 닫을 수 있는 조립 구조.</p></div>
+          <div class="rcard"><div class="rcard-title">Mobile Platform</div><p>소형 로버 차체와 자작 전기차 플랫폼 설계·제작.<br>구동부와 차체의 통합.</p></div>
+          <div class="rcard"><div class="rcard-title">Rapid Prototyping</div><p>CAD(Fusion 360 · NX) → 3D 프린팅 → 실물 시험.<br>짧은 주기의 반복 설계.</p></div>
+        </div>
+    </section>
+    <section class="rarea">
+      <h2 class="rarea-title"><span class="rarea-icon">◈</span>Area 02 · Robot Simulation</h2>
+      <p class="rarea-lead">실물과 같은 조건의 시뮬레이션에서 로봇을 먼저 검증하고, 실제 하드웨어와 연결합니다.</p>
+        <div class="rgrid">
+          <div class="rcard"><div class="rcard-title">Robot Modeling</div><p>다축 로버의 USD 모델 구성.<br>조인트 · 드라이브 · 질량 설정과 물리 정합.</p></div>
+          <div class="rcard"><div class="rcard-title">Terrain Interaction</div><p>실시간 지형 변형(바퀴 자국) 엔진.<br>하중 기반 침하 모델과 휠 형상 투영.</p></div>
+          <div class="rcard"><div class="rcard-title">Real-Time Performance</div><p>필요한 영역만 고해상도로 갱신하는 구조.<br>변형 활성 주행 속도(RTF) 0.008 → 0.5.</p></div>
+          <div class="rcard"><div class="rcard-title">Hardware-in-the-Loop</div><p>Isaac Sim과 Jetson 연동.<br>시뮬레이션과 실제 제어기를 잇는 검증 루프.</p></div>
+        </div>
+    </section>
+    <section class="rarea">
+      <h2 class="rarea-title"><span class="rarea-icon">✦</span>Area 03 · Robot Intelligence</h2>
+      <p class="rarea-lead">로봇이 스스로 위치를 알고, 사람의 시연에서 동작을 배우게 합니다.</p>
+        <div class="rgrid">
+          <div class="rcard"><div class="rcard-title">Self-Deployed Positioning</div><p>로봇이 직접 설치한 UWB 기준점과 IMU 결합 3차원 위치 추정.<br>시뮬레이션 기준 오차 2~7 cm (팀 연구).</p></div>
+          <div class="rcard"><div class="rcard-title">Imitation Learning</div><p>Teleoperation 시연 데이터 수집과<br>ACT 기반 모방 학습 파이프라인.</p></div>
+        </div>
     </section>
   </main>
 </div>
