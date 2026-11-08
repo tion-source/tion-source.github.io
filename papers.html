@@ -3,52 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Papers — Tion LAB</title>
+<title>논문·성과 — TION LAB</title>
+<link rel="icon" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #F5F2EC; --card: #EDEAE2;
-    --border: #D6D2C8; --text: #1A1A18; --sub: #5C5C52;
-    --muted: #8A8A7E; --accent: #2D6A4F; --accent-bg: #EBF4EF;
-    --accent-lt: #B7D8C7; --mono: 'JetBrains Mono', monospace; --sans: 'Inter', sans-serif;
-  }
-  html { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
-  .page { max-width: 800px; margin: 0 auto; padding: 2.5rem 2rem 5rem; }
-  .back { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 12px; color: var(--muted); text-decoration: none; margin-bottom: 2rem; transition: color 0.15s; }
-  .back:hover { color: var(--accent); }
-  .page-header { margin-bottom: 2.5rem; }
-  .page-icon { font-size: 36px; margin-bottom: 0.75rem; }
-  .page-title { font-family: var(--mono); font-size: 26px; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
-  .page-sub { font-size: 14px; color: var(--sub); }
-  .section-label { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
-  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-  .empty-state { background: var(--card); border: 1px dashed var(--border); border-radius: 12px; padding: 3rem 2rem; text-align: center; }
-  .empty-icon { font-size: 32px; margin-bottom: 1rem; }
-  .empty-title { font-family: var(--mono); font-size: 14px; color: var(--sub); margin-bottom: 0.5rem; }
-  .empty-sub { font-size: 13px; color: var(--muted); }
-</style>
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<div class="page">
-  <a class="back" href="index.html">← Tion LAB</a>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="logo" href="index.html"><img src="assets/logo.png" alt="TION LAB — Thinking In Open Nature"></a>
+    <div class="name">박시현 · SIHYEON PARK</div>
+    <nav class="nav">
+      <a class="nav-item" href="index.html">홈</a>
+      <a class="nav-item" href="research.html">연구분야</a>
+      <a class="nav-item" href="mobility.html">프로젝트</a>
+      <a class="nav-item" href="members.html">구성원</a>
+      <a class="nav-item active" href="papers.html">논문·성과</a>
+      <a class="nav-item" href="lectures.html">강의</a>
+      <a class="nav-item" href="news.html">소식</a>
+      <a class="nav-item" href="contact.html">연락처</a>
+    </nav>
+    <div class="sidebar-footer">© 2026 TION LAB</div>
+  </aside>
+  <main class="main">
+    <header class="page-header">
+      <h1 class="page-title">논문·성과</h1>
+      <p class="page-sub">Publications · Technical Notes · Awards</p>
+    </header>
+    <section>
+      <div class="section-head"><span class="section-title">Publications</span><div class="section-line"></div></div>
+      <div class="empty">준비 중입니다.</div>
 
-  <div class="page-header">
-    <div class="page-icon">📄</div>
-    <div class="page-title">Papers</div>
-    <div class="page-sub">Research publications & technical writings</div>
-  </div>
+    </section>
+    <section>
+      <div class="section-head"><span class="section-title">Technical Notes</span><div class="section-line"></div></div>
+      <ul class="news-list">
+        <li><span class="news-date">2026.11</span><span class="news-text"><a href="terrain-deformation.html">OmniLRS 지형 변형 엔진 정밀 분석</a></span></li>
+      </ul>
 
-  <div class="section-label">Publications</div>
+    </section>
+    <section>
+      <div class="section-head"><span class="section-title">Awards</span><div class="section-line"></div></div>
+      <ul class="news-list">
+        <li><span class="news-date">2026.10</span><span class="news-text"><a href="https://www.fnnews.com/news/202610271425099981" target="_blank" rel="noopener">2026 대한민국 우주로버 챌린지 임무 부문 우수상 · 경상남도지사상</a></span></li>
+        <li><span class="news-date">2026-1</span><span class="news-text">성과공유회 최우수상 — Isaac Sim 달 지형 시뮬레이션</span></li>
+        <li><span class="news-date">2026-1</span><span class="news-text">성과공유회 최우수상 — LeRobot SO-ARM Imitation Learning (AI 튜터링)</span></li>
+        <li><span class="news-date">2025-1</span><span class="news-text">성과공유회 최우수상 — HSU 이동플랫폼</span></li>
+      </ul>
 
-  <div class="empty-state">
-    <div class="empty-icon">🔬</div>
-    <div class="empty-title">Papers coming soon</div>
-    <div class="empty-sub">Research in progress — publications will appear here.</div>
-  </div>
-
+    </section>
+  </main>
 </div>
 </body>
 </html>

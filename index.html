@@ -3,299 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TION LAB — 션</title>
+<title>TION LAB — 박시현</title>
+<link rel="icon" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --bg:        #F5F2EC;
-    --card:      #EDEAE2;
-    --card-hover:#E5E1D8;
-    --border:    #D6D2C8;
-    --text:      #1A1A18;
-    --sub:       #5C5C52;
-    --muted:     #8A8A7E;
-    --accent:    #2a2729;
-    --accent-bg: #f5cded;
-    --accent-lt: #f59e9e;
-    --mono:      'JetBrains Mono', monospace;
-    --sans:      'Inter', sans-serif;
-  }
-
-  html { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
-
-  /* ── Layout ── */
-  .layout {
-    display: grid;
-    grid-template-columns: 240px 1fr;
-    gap: 0;
-    max-width: 1000px;
-    margin: 0 auto;
-    min-height: 100vh;
-  }
-
-  /* ── Sidebar ── */
-  .sidebar {
-    padding: 2.5rem 1.5rem 2.5rem 2rem;
-    border-right: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .lab-badge {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: var(--accent);
-    background: var(--accent-bg);
-    border: 1px solid var(--accent-lt);
-    border-radius: 4px;
-    padding: 3px 8px;
-    width: fit-content;
-  }
-
-  .avatar-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-
-  .avatar {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent-lt) 0%, var(--accent-bg) 100%);
-    border: 2px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--mono);
-    font-weight: 700;
-    font-size: 22px;
-    color: var(--accent);
-    letter-spacing: -1px;
-  }
-
-  .name-ko { font-size: 18px; font-weight: 600; color: var(--text); }
-  .name-en { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: 1px; }
-
-  .bio {
-    font-size: 13px;
-    color: var(--sub);
-    line-height: 1.65;
-    border-left: 2px solid var(--accent-lt);
-    padding-left: 10px;
-  }
-
-  .sidebar-section { display: flex; flex-direction: column; gap: 0.4rem; }
-  .sidebar-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-bottom: 2px;
-  }
-
-  .link-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: var(--sub);
-    text-decoration: none;
-    padding: 4px 0;
-    transition: color 0.15s;
-  }
-  .link-item:hover { color: var(--accent); }
-  .link-icon { width: 16px; text-align: center; opacity: 0.6; flex-shrink: 0; }
-
-  .sidebar-footer {
-    margin-top: auto;
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--muted);
-  }
-
-  /* ── Main ── */
-  .main { padding: 2.5rem 2.5rem 4rem; display: flex; flex-direction: column; gap: 2.5rem; }
-
-  .section-head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 1rem;
-  }
-  .section-title {
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .section-line { flex: 1; height: 1px; background: var(--border); }
-
-  /* README block */
-  .readme {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  .readme-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 16px;
-    border-bottom: 1px solid var(--border);
-    background: var(--bg);
-  }
-  .readme-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); }
-  .readme-filename { font-family: var(--mono); font-size: 12px; color: var(--muted); }
-  .readme-body { padding: 1.25rem 1.5rem; }
-  .readme-body h1 { font-family: var(--mono); font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
-  .readme-body p { font-size: 13.5px; color: var(--sub); line-height: 1.7; margin-bottom: 0.75rem; }
-  .readme-body p:last-child { margin-bottom: 0; }
-
-  /* Research tags */
-  .tag-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tag {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--accent);
-    background: var(--accent-bg);
-    border: 1px solid var(--accent-lt);
-    border-radius: 4px;
-    padding: 4px 10px;
-    transition: background 0.15s, border-color 0.15s;
-    cursor: default;
-  }
-  .tag:hover { background: var(--accent-lt); border-color: var(--accent); }
-
-  /* Project cards */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
-  }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1rem 1.1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    transition: background 0.15s, border-color 0.15s;
-    text-decoration: none;
-  }
-  .card:hover { background: var(--card-hover); border-color: #C0BDB3; }
-  .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
-  .card-icon { font-size: 15px; }
-  .card-lang {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--muted);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 1px 6px;
-  }
-  .card-name { font-size: 14px; font-weight: 600; color: var(--accent); }
-  .card-desc { font-size: 12.5px; color: var(--sub); line-height: 1.55; }
-  .card-stats { display: flex; gap: 12px; margin-top: 4px; }
-  .card-stat { font-family: var(--mono); font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 4px; }
-
-  /* Activity graph placeholder */
-  .activity-wrap {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1.25rem 1.5rem;
-  }
-  .activity-label { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 0.75rem; }
-  .contrib-grid { display: flex; gap: 3px; }
-  .contrib-col { display: flex; flex-direction: column; gap: 3px; }
-  .contrib-cell {
-    width: 11px; height: 11px; border-radius: 2px;
-    background: var(--border);
-  }
-  .contrib-cell.l1 { background: var(--accent-bg); }
-  .contrib-cell.l2 { background: var(--accent-lt); }
-  .contrib-cell.l3 { background: #74C69D; }
-  .contrib-cell.l4 { background: var(--accent); }
-
-  /* Responsive */
-  @media (max-width: 680px) {
-    .layout { grid-template-columns: 1fr; }
-    .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); padding: 2rem 1.5rem; flex-direction: row; flex-wrap: wrap; gap: 1.5rem; }
-    .avatar-wrap { flex-direction: row; align-items: center; gap: 1rem; }
-    .main { padding: 1.5rem; }
-  }
-
-  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
-</style>
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-
 <div class="layout">
-
-  <!-- ── Sidebar ── -->
   <aside class="sidebar">
-    <div class="lab-badge">TION LAB</div>
-
-    <div class="avatar-wrap">
-      <div class="avatar">😈</div>
-      <div>
-        <div class="name-ko"> 박시현· SIHYEON PARK</div>
-      </div>
-    </div>
-
-    <p class="bio">Thinking In Open Nature</p>
-
-    <div class="sidebar-section">
-      <div class="sidebar-label">Links</div>
-      <a class="link-item" href="https://github.com" target="_blank">
-        <span class="link-icon">⌥</span> GitHub
-      </a>
-      <a class="link-item" href="https://notion.so" target="_blank">
-        <span class="link-icon">◻</span> Notion
-      </a>
-      <a class="link-item" href="mailto:hello@tion.dev">
-        <span class="link-icon">@</span> Email
-      </a>
-    </div>
-
-    <div class="sidebar-section">
-      <div class="sidebar-label">Location</div>
-      <span class="link-item"><span class="link-icon">◎</span> Seoul, Korea</span>
-    </div>
-
+    <a class="logo" href="index.html"><img src="assets/logo.png" alt="TION LAB — Thinking In Open Nature"></a>
+    <div class="name">박시현 · SIHYEON PARK</div>
+    <nav class="nav">
+      <a class="nav-item active" href="index.html">홈</a>
+      <a class="nav-item" href="research.html">연구분야</a>
+      <a class="nav-item" href="mobility.html">프로젝트</a>
+      <a class="nav-item" href="members.html">구성원</a>
+      <a class="nav-item" href="papers.html">논문·성과</a>
+      <a class="nav-item" href="lectures.html">강의</a>
+      <a class="nav-item" href="news.html">소식</a>
+      <a class="nav-item" href="contact.html">연락처</a>
+    </nav>
     <div class="sidebar-footer">© 2026 TION LAB</div>
   </aside>
-
-  <!-- ── Main ── -->
   <main class="main">
-
-    <!-- README -->
     <section>
       <div class="readme">
-        <div class="readme-header">
-          <div class="readme-dot"></div> 
-          <div class="readme-dot"></div>
-          <div class="readme-dot"></div>
-          <span class="readme-filename"></span>
-        </div>
+        <div class="readme-header"><div class="readme-dot"></div><div class="readme-dot"></div><div class="readme-dot"></div></div>
         <div class="readme-body">
           <h1>Hello, My name is Sihyeon Park 👋</h1>
           <p>Physical AI와 로보틱스를 연구합니다. 시뮬레이터에서 학습한 로봇이 현실 세계에서도 작동하게 만드는 것 — Sim2Real 갭을 줄이는 게 제 주된 관심사예요.</p>
@@ -303,13 +38,8 @@
         </div>
       </div>
     </section>
-
-    <!-- Research Interests -->
     <section>
-      <div class="section-head">
-        <span class="section-title">Research Interests</span>
-        <div class="section-line"></div>
-      </div>
+      <div class="section-head"><span class="section-title">Research Interests</span><div class="section-line"></div></div>
       <div class="tag-grid">
         <span class="tag">Physical AI</span>
         <span class="tag">Robotics</span>
@@ -320,84 +50,51 @@
         <span class="tag">Sim2Real</span>
         <span class="tag">Space Robotics</span>
       </div>
-    </section>
 
-    <!-- Projects -->
+    </section>
     <section>
-      <div class="section-head">
-        <span class="section-title">Projects</span>
-        <div class="section-line"></div>
-      </div>
-      <div class="card-grid">
-        <a class="card" href="rover.html">
-          <div class="card-top">
-            <span class="card-icon">🛰️</span>
-            <span class="card-lang">Python · ROS2</span>
-          </div>
-          <div class="card-name">Rover</div>
-          <div class="card-desc">달 표면 로보틱스 시뮬레이터. Isaac Sim 기반, ROS2 Humble 연동.</div>
-          <div class="card-stats">
-            <span class="card-stat">★</span>
-            <span class="card-stat">⑂</span>
-          </div>
+      <div class="section-head"><span class="section-title">Ongoing Projects</span><div class="section-line"></div></div>
+      <div class="ongoing-grid">
+        <a class="ongoing" href="mobility.html">
+          <div class="ongoing-top"><span class="ongoing-period">2026.04 ~</span><span class="status">진행 중</span></div>
+          <div class="ongoing-name">달 탐사 로버 HILS 시스템 · 디지털 트윈</div>
+          <div class="ongoing-desc">현대자동차 산학협력. Isaac Sim 플랜트와 Jetson·제어 보드를 잇는 Hardware-in-the-Loop 주행 검증 환경. 학부연구생 팀장.</div>
         </a>
-        <a class="card" href="robot.html">
-          <div class="card-top">
-            <span class="card-icon">🤖</span>
-            <span class="card-lang">C++ · ROS2</span>
-          </div>
-          <div class="card-name">Robot</div>
-          <div class="card-desc"> - </div>
-          <div class="card-stats">
-            <span class="card-stat">★</span>
-            <span class="card-stat">⑂</span>
-          </div>
+        <a class="ongoing" href="terrain-deformation.html">
+          <div class="ongoing-top"><span class="ongoing-period">2026.09 ~ 11</span><span class="status">진행 중</span></div>
+          <div class="ongoing-name">실시간 지형 변형(바퀴 자국) 엔진</div>
+          <div class="ongoing-desc">산학공동연구프로젝트. 휠 주변 1.5 cm 타일 + Fabric 부분 갱신으로 변형 활성 주행 RTF 0.008 → 0.48~0.50.</div>
+        </a>
+      </div>
+
+    </section>
+    <section>
+      <div class="section-head"><span class="section-title">Latest News</span><div class="section-line"></div></div>
+      <ul class="news-list">
+        <li><span class="news-date">2026.11</span><span class="news-text"><a href="terrain-deformation.html">OmniLRS 지형 변형 엔진 기술 분석 노트 공개</a></span></li>
+        <li><span class="news-date">2026.10</span><span class="news-text"><a href="https://www.fnnews.com/news/202610271425099981" target="_blank" rel="noopener">2026 대한민국 우주로버 챌린지 임무 부문 우수상(경상남도지사상) 수상</a></span></li>
+        <li><span class="news-date">2026.09</span><span class="news-text">산학공동연구프로젝트 — 달 탐사 로버 HILS 플랜트 지형 변형 엔진 개발 시작</span></li>
+      </ul>
+      <a class="more" href="news.html">전체 소식 →</a>
+
+    </section>
+    <section>
+      <div class="section-head"><span class="section-title">Projects</span><div class="section-line"></div></div>
+      <div class="card-grid">
+        <a class="card" href="mobility.html">
+          <div class="card-top"><span class="card-icon">🛰️</span><span class="card-lang">Python · C++ · ROS2</span></div>
+          <div class="card-name">Mobility</div>
+          <div class="card-desc">달 탐사 로버, 이동 플랫폼, 로봇팔 — 시뮬레이션부터 HILS, 실물 제작까지.</div>
         </a>
         <a class="card" href="papers.html">
-          <div class="card-top">
-            <span class="card-icon">📄</span>
-            <span class="card-lang">Python</span>
-          </div>
+          <div class="card-top"><span class="card-icon">📄</span><span class="card-lang">Notes · Awards</span></div>
           <div class="card-name">Papers</div>
-          <div class="card-desc"> - </div>
-          <div class="card-stats">
-            <span class="card-stat">★</span>
-            <span class="card-stat">⑂</span>
-          </div>
+          <div class="card-desc">논문, 기술 분석 노트, 수상 실적.</div>
         </a>
       </div>
+
     </section>
-
-    
-
   </main>
 </div>
-
-<script>
-  const grid = document.getElementById('graph');
-  const levels = ['','l1','l2','l3','l4'];
-  const weights = [0.45, 0.25, 0.15, 0.1, 0.05];
-
-  function pick() {
-    const r = Math.random();
-    let cum = 0;
-    for (let i = 0; i < weights.length; i++) {
-      cum += weights[i];
-      if (r < cum) return levels[i];
-    }
-    return '';
-  }
-
-  for (let w = 0; w < 52; w++) {
-    const col = document.createElement('div');
-    col.className = 'contrib-col';
-    for (let d = 0; d < 7; d++) {
-      const cell = document.createElement('div');
-      cell.className = 'contrib-cell ' + pick();
-      col.appendChild(cell);
-    }
-    grid.appendChild(col);
-  }
-</script>
 </body>
 </html>
