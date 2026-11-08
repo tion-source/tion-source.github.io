@@ -140,3 +140,20 @@ a { color: inherit; }
 .ptags { display: flex; flex-wrap: wrap; gap: 6px; }
 .ptag { font-family: var(--mono); font-size: 11px; color: var(--violet); background: var(--accent-bg); border: 1px solid var(--accent-lt); border-radius: 4px; padding: 1px 8px; }
 .team { font-size: 12px; font-weight: 400; color: var(--muted); }
+
+/* Research page (v2) */
+.rhead { padding-bottom: 1.75rem; border-bottom: 1px solid var(--border); }
+.rtitle { font-size: 34px; font-weight: 300; color: #6E6A66; letter-spacing: -0.01em; margin-bottom: 1.4rem; }
+.rtitle span { font-weight: 300; }
+.rintro { font-size: 15.5px; color: var(--text); line-height: 1.8; }
+.rintro strong { font-weight: 700; }
+.rarea { padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+.rarea:last-child { border-bottom: none; }
+.rarea-title { display: flex; align-items: center; gap: 12px; font-size: 27px; font-weight: 300; color: var(--text); margin-bottom: 0.6rem; }
+.rarea-icon { font-size: 24px; color: var(--violet); width: 28px; text-align: center; }
+.rarea-lead { font-size: 14.5px; color: var(--sub); margin-bottom: 1.2rem; line-height: 1.7; }
+.rgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.rcard { background: #FBFAF7; border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.2rem; }
+.rcard-title { font-size: 15.5px; font-weight: 600; margin-bottom: 0.45rem; }
+.rcard p { font-size: 14px; color: var(--sub); line-height: 1.7; }
+@media (max-width: 760px) { .rgrid { grid-template-columns: 1fr; } .rtitle { font-size: 28px; } .rarea-title { font-size: 22px; } }
