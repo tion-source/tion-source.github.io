@@ -220,3 +220,5 @@ a.pcard { text-decoration: none; }
 @media (max-width: 760px) { .fig-row { grid-template-columns: 1fr 1fr; } }
 .fig-row img { height: 280px; width: 100%; object-fit: contain; }
 .fig-pair { max-width: 560px; margin-bottom: 1.2rem; }
+.prose-list + .fig-row, .prose-list + .fig, .pdlg-body ul + .fig-row, .pdlg-body ul + .fig, p + .fig-row { margin-top: 1.4rem; }
+.fig-row + .fig-row { margin-top: 0.4rem; }
