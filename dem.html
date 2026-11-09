@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=202611100230">
+<link rel="stylesheet" href="assets/site.css?v=202611100302">
 </head>
 <body>
 <div class="layout">
@@ -28,14 +28,14 @@
   </aside>
   <main class="main">
     <header class="page-header">
-      <div class="pcard-top" style="justify-content:flex-start;gap:10px"><span class="pcard-period">2026 1학기</span></div>
+      <div class="pcard-top" style="justify-content:flex-start;gap:10px"><span class="pcard-period">2026 1학기 ~ 여름방학</span></div>
       <h1 class="page-title" style="margin-top:6px">DEM Lunar Terrain Simulation</h1>
       <p class="page-sub">DEM 기반 3D 달 지형 생성 및 Isaac Sim 로봇 주행 시뮬레이션</p>
       <span class="badge-award">🏆 성과공유회 최우수상(1위)</span>
     </header>
     <section>
       <div class="section-head"><span class="section-title">Overview</span><div class="section-line"></div></div>
-      <div class="pdlg-body"><p>DEM(Digital Elevation Model) 데이터로 달 표면 3D 지형을 만들고, Isaac Sim에서 Husky UGV 주행 시뮬레이션까지 이어지는 파이프라인을 팀으로 완성했습니다.</p><ul><li><b>담당</b> — 팀원이 만든 3D 달 지형을 Isaac Sim · OmniLRS의 Lunaryard 환경에 적용 (기본 지형을 우리 팀 지형으로 교체)</li><li>OmniLRS 기본 로버인 Husky UGV가 크레이터를 만나도 바퀴가 지면에 잘 접지한 채 주행하는 것까지 확인</li></ul><h3 class="sub" style="margin-top:1rem">연장 — 로커보기 로버 (2026 여름방학, 공학경진대회 준비)</h3><p>1학기에 만든 달 지형 시뮬레이션을 이어서, 실물 로버와 시뮬레이션을 연결했습니다.</p><ul><li>오픈소스 로커보기 구조(Printables 공개 모델, DTU RoboCup 계단 등반 로버 기반)를 활용해 <b>실물 로버 제작 및 주행 확인</b></li><li>같은 로버를 <b>USD 모델로 변환</b>해 Isaac Sim에 적용</li><li>팀이 만든 달 지형 위에서 <b>시뮬레이션 주행까지 확인</b></li></ul></div>
+      <div class="pdlg-body"><p>DEM(Digital Elevation Model) 데이터로 달 표면 3D 지형을 만들고, Isaac Sim에서 Husky UGV 주행 시뮬레이션까지 이어지는 파이프라인을 팀으로 완성했습니다.</p><ul><li><b>담당</b> — 팀원이 만든 3D 달 지형을 Isaac Sim · OmniLRS의 Lunaryard 환경에 적용 (기본 지형을 우리 팀 지형으로 교체)</li><li>OmniLRS 기본 로버인 Husky UGV가 크레이터를 만나도 바퀴가 지면에 잘 접지한 채 주행하는 것까지 확인</li></ul><h3 class="sub" style="margin-top:1rem">연장 — 6륜 로커보기 로버 Sim-to-Real (2026 여름방학, 공학경진대회 준비)</h3><p>1학기에 만든 달 지형 시뮬레이션을 이어, 실물 6륜 로커보기 로버와 Isaac Sim 속 로버를 ROS2로 실시간 동기화했습니다. (출품작: Isaac Sim·ROS2 기반 6륜 달 탐사 로버의 고충실도 시뮬레이션 환경 구축 및 Sim-to-Real 연구)</p><ul><li><b>실물 로버</b> — 오픈소스 로커보기 모델(Printables 공개 모델, DTU RoboCup 계단 등반 로버)을 기반으로 3D 프린팅·조립하고, 구동 보드 배선까지 연결해 6개 휠 모터 정상 구동 확인</li><li><b>로버 모델링·통합</b> — Fusion 360으로 일부 부품을 달 탐사용으로 재모델링, Blender에서 휠 계층(WHL_FL/FR/ML/MR/RL/RR) 정리 후 USD로 변환해 Isaac Sim 물리 조인트 적용</li><li><b>지형 주행 검증</b> — 우리 팀 달 지형과 평지·험지·경사·모래 지형에서 시뮬레이션 주행 확인</li><li><b>드라이브 모드 3종 실시간 전환</b> — 종방향(직진), 횡방향(크랩), 제자리 회전. 키보드·조이스틱 입력, USD 속성 제어로 즉시 반영</li><li><b>Sim-to-Real 동기화</b> — Isaac Sim 노트북과 Jetson의 ROS2 Domain ID를 통일해, 시뮬레이션 구동 명령(/rover_driving_cmd)이 약 15 Hz로 실물 모터에 전달되도록 구현. 가상 로버와 실물 로버가 같이 움직이는 것을 영상으로 검증</li></ul><div class="fig-row"><figure class="fig"><img src="assets/dem-rover.jpg" alt="실물 6륜 로커보기 로버"><figcaption>실물 6륜 로커보기 로버 (3D 프린팅·조립)</figcaption></figure><figure class="fig"><img src="assets/dem-sim.jpg" alt="Isaac Sim 달 지형 위의 로버"><figcaption>같은 로버를 USD로 변환해 Isaac Sim 달 지형에서 주행</figcaption></figure></div><figure class="fig fig-half"><img src="assets/dem-pipeline.jpg" alt="Sim-to-Real 파이프라인"><figcaption>Sim-to-Real 파이프라인 — Isaac Sim 노트북 ↔ Jetson (같은 ROS2 Domain)</figcaption></figure><p>당시 다음 단계로 잡았던 지형 변형(바퀴 자국) 시뮬레이션은 이후 L-Project에서 이어서 진행하고 있습니다.</p></div>
 
     </section>
       <div class="pdlg-links"><a href="mobility.html">← 프로젝트 목록</a></div>
