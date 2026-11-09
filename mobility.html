@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=202611100114">
+<link rel="stylesheet" href="assets/site.css?v=202611100148">
 </head>
 <body>
 <div class="layout">
@@ -33,118 +33,39 @@
     </header>
     <section>
       <div class="section-head"><span class="section-title">Rover · Space Mobility</span><div class="section-line"></div></div>
-    <div class="project-block">
-      <div class="project-header">
-        <div class="project-meta">
-          <span class="project-period">2026.10</span>
-          <div class="project-name">2026 대한민국 우주로버 챌린지(KSRC) — 위치 기준점을 직접 설치하는 탐사 로버</div>
-          <span class="badge-award">🏆 임무 부문 우수상 · 경상남도지사상</span>
-        </div>
+      <div class="pgrid">
+        <button class="pcard" type="button" data-open="dlg-ksrc"><span class="pcard-top"><span class="pcard-period">2026.10</span></span><span class="pcard-title">Self-Deploying UWB Rover</span><span class="badge-award">🏆 임무 부문 우수상 · 경상남도지사상</span></button>
+        <button class="pcard" type="button" data-open="dlg-terrain"><span class="pcard-top"><span class="pcard-period">2026-2</span></span><span class="pcard-title">Real-Time Terrain Deformation</span></button>
+        <button class="pcard" type="button" data-open="dlg-twin"><span class="pcard-top"><span class="pcard-period">2026.04 ~</span><span class="status">진행 중</span></span><span class="pcard-title">Lunar Digital Twin · HILS</span></button>
+        <button class="pcard" type="button" data-open="dlg-dem"><span class="pcard-top"><span class="pcard-period">2026-1</span></span><span class="pcard-title">DEM Lunar Terrain Simulation</span><span class="badge-award">🏆 성과공유회 최우수상(1위)</span></button>
+        <button class="pcard" type="button" data-open="dlg-req"><span class="pcard-top"><span class="pcard-period">2025 여름</span></span><span class="pcard-title">Space Mobility Requirements</span></button>
       </div>
-      <div class="project-desc">
-        한성대 미래모빌리티학과 팀 <strong>아르케 엠원(Arche_M1)</strong>으로 첫 대회에 참가해, 23개 팀 중 본선 8개 팀에 진출하고 임무 부문 우수상(경상남도지사상)을 받았습니다. 로버가 UWB 앵커를 지형에 직접 투하해 위치 기준점을 설치하고, <strong>무선 장치 4개(UWB)와 IMU 정보를 결합해 3차원 위치를 실시간으로 추정</strong>하는 탐사 로버를 개발했습니다.
-        <br><a href="ksrc.html" style="color: var(--accent); font-family: var(--mono); font-size: 12px; text-decoration: none;">→ 메커니즘·앵커 설계 자세히 보기</a> &nbsp; <a href="https://www.fnnews.com/news/202610271425099981" target="_blank" rel="noopener" style="color: var(--accent); font-family: var(--mono); font-size: 12px; text-decoration: none;">→ 관련 기사 (파이낸셜뉴스)</a>
-      </div>
-    </div>
-    <hr class="divider">
-    <div class="project-block">
-      <div class="project-header">
-        <div class="project-meta">
-          <span class="project-period">2026-2</span>
-          <div class="project-name">달 탐사 로버 HILS 플랜트 — OmniLRS 실시간 지형 변형(바퀴 자국) 엔진</div>
-        </div>
-      </div>
-      <div class="project-desc">
-        현대자동차 산학프로젝트 <strong>L-Project 달 로버 12축 HILS 시스템</strong>의 플랜트(Isaac Sim + OmniLRS)에서 바퀴 자국이 생기지 않거나 주행이 멈추던 지형 변형 엔진을 분석·개선했습니다. 렌더–충돌 메시 분리와 <strong>휠 주변 1.5 cm 고해상도 타일 + Fabric 부분 갱신</strong>으로 변형 활성 주행 RTF를 0.008에서 0.48~0.50으로 높이고, NASA VIPER 휠의 그라우저 무늬가 보이는 연속 자국을 구현했습니다.
-        <br><a href="terrain-deformation.html" style="color: var(--accent); font-family: var(--mono); font-size: 12px; text-decoration: none;">→ 기술 분석 노트 읽기</a>
-      </div>
-    </div>
-    <hr class="divider">
-    <div class="project-block">
-      <div class="project-header">
-        <div class="project-meta">
-          <span class="project-period">2026.04 ~</span>
-          <div class="project-name">현대자동차 산학협력 — 달 탐사 로버 시뮬레이션을 위한 달 표면 디지털 트윈 구축</div>
-        </div>
-      </div>
-      <div class="project-desc">
-        <strong>학부연구생 팀장</strong>으로서 달 표면 디지털 트윈 구축 프로젝트를 진행 중입니다. 현대자동차와의 산학협력 과제로, 달 탐사 로버의 실제 임무 수행을 위한 고정밀 시뮬레이션 환경 개발을 목표로 하고 있습니다.
-      </div>
-    </div>
-    <hr class="divider">
-    <div class="project-block">
-      <div class="project-header">
-        <div class="project-meta">
-          <span class="project-period">2026-1</span>
-          <div class="project-name">DEM 기반 3D 달 지형 생성 및 Isaac Sim 로봇 주행 시뮬레이션</div>
-          <span class="badge-award">🏆 성과공유회 최우수상(1위)</span>
-        </div>
-      </div>
-      <div class="project-desc">
-        지형 데이터 학습부터 Husky UGV 물리 시뮬레이션 검증까지의 <strong>End-to-End 파이프라인</strong>을 완성하였습니다. DEM(Digital Elevation Model) 데이터를 기반으로 달 표면 3D 지형을 생성하고, Isaac Sim 환경에서 로봇 주행 시뮬레이션을 구현하였습니다.
-      </div>
-    </div>
-    <hr class="divider">
-    <div class="project-block">
-      <div class="project-header">
-        <div class="project-meta">
-          <span class="project-period">2025 여름</span>
-          <div class="project-name">현대자동차 산학협력 — 우주탐사 유무인 모빌리티 요구사항 및 서비스 시나리오 도출</div>
-        </div>
-      </div>
-      <div class="project-desc">
-        달 탐사 로버 및 화성 탐사 로버 국내외 기술동향 분석을 수행하고, 타행성 탐사 분야에서 우리 대학의 특성화 분야로 추진할 기술 분야를 도출하는 등 <strong>기술적 측면의 성과를 도출</strong>하였습니다.
-      </div>
-    </div>
 
     </section>
     <section>
       <div class="section-head"><span class="section-title">Mobile Platform · Robot</span><div class="section-line"></div></div>
-    <div class="project-block">
-      <div class="project-header">
-        <div class="project-meta">
-          <span class="project-period">2026-1</span>
-          <div class="project-name">LeRobot SO-ARM — Teleoperation & Imitation Learning (AI 튜터링 · 팀 기니허브)</div>
-          <span class="badge-award">🏆 성과공유회 최우수상(1위)</span>
-        </div>
+      <div class="pgrid">
+        <button class="pcard" type="button" data-open="dlg-lerobot"><span class="pcard-top"><span class="pcard-period">2026-1</span></span><span class="pcard-title">Robot Imitation Learning</span><span class="badge-award">🏆 성과공유회 최우수상(1위)</span></button>
+        <button class="pcard" type="button" data-open="dlg-platform"><span class="pcard-top"><span class="pcard-period">2025-1</span></span><span class="pcard-title">Modular Mobile Platform</span><span class="badge-award">🏆 성과공유회 최우수상(1위)</span></button>
+        <button class="pcard" type="button" data-open="dlg-ev"><span class="pcard-top"><span class="pcard-period">2024-2</span></span><span class="pcard-title">DIY EV Platform</span></button>
       </div>
-      <div class="project-desc">
-        튜터로서 LeRobot 프레임워크 기반 SO-ARM 로봇 팔을 활용하여 <strong>Teleoperation 및 Imitation Learning</strong> 파이프라인을 구현하였습니다. AI 튜터링 프로그램의 일환으로 진행된 프로젝트입니다.
-      </div>
-    </div>
-    <hr class="divider">
-    <div class="project-block">
-      <div class="project-header">
-        <div class="project-meta">
-          <span class="project-period">2025-1</span>
-          <div class="project-name">HSU 이동플랫폼 개발 (진로탐색제)</div>
-          <span class="badge-award">🏆 성과공유회 최우수상(1위)</span>
-        </div>
-      </div>
-      <div class="project-desc">
-        하드웨어를 기능 단위로 재구성 가능한 <strong>추상화 아키텍처</strong>를 설계하였습니다.
-        <ul>
-          <li>ROS2 노드 단위 모듈형 구조 — 센서·제어·인지·조작 독립 교체 가능</li>
-          <li>이동·조작·인지 통합 운용 환경 구축</li>
-          <li>다양한 로봇 응용 분야 재사용 가능한 구조 설계</li>
-        </ul>
-      </div>
-    </div>
-    <hr class="divider">
-    <div class="project-block">
-      <div class="project-header">
-        <div class="project-meta">
-          <span class="project-period">2024-2</span>
-          <div class="project-name">HSU 자작 전기차 플랫폼 개발 (산학공동연구)</div>
-        </div>
-      </div>
-      <div class="project-desc">
-        <strong>전기차 플랫폼 2대를 직접 제작</strong>하고, ROS2 Node를 개발하였습니다. 산학공동연구 과제로 진행된 프로젝트로, 하드웨어 설계부터 소프트웨어 인터페이스까지 전반적인 개발에 참여하였습니다.
-      </div>
-    </div>
 
     </section>
   </main>
+  <dialog class="pdlg" id="dlg-ksrc"><div class="pdlg-in"><button class="pdlg-x" type="button" aria-label="닫기">×</button><div class="pcard-period">2026.10</div><h2 class="pdlg-title">Self-Deploying UWB Rover</h2><div class="pdlg-name">2026 대한민국 우주로버 챌린지 — 위치 기준점을 직접 설치하는 탐사 로버</div><span class="badge-award">🏆 임무 부문 우수상 · 경상남도지사상</span><div class="pdlg-body"><p>팀 아르케 엠원(Arche_M1)으로 첫 대회에 참가해 23개 팀 중 본선 8팀에 진출했습니다. 로버가 UWB 앵커를 지형에 직접 투하해 위치 기준점을 설치하고, UWB와 IMU를 결합해 3차원 위치를 실시간으로 추정합니다(팀 작업).</p><ul><li><b>담당</b> — 앵커 투하 메커니즘(튜브 2개 × 2단 서보 걸쇠), 앵커 하우징 소각도 바요넷 설계, 로버 차체 설계·제작(휠 제외)</li></ul></div><div class="pdlg-links"><a href="ksrc.html">→ 메커니즘·앵커 설계 자세히 보기</a><a href="https://www.fnnews.com/news/202610271425099981" target="_blank" rel="noopener">→ 관련 기사 (파이낸셜뉴스)</a></div></div></dialog>
+  <dialog class="pdlg" id="dlg-terrain"><div class="pdlg-in"><button class="pdlg-x" type="button" aria-label="닫기">×</button><div class="pcard-period">2026-2</div><h2 class="pdlg-title">Real-Time Terrain Deformation</h2><div class="pdlg-name">달 로버 HILS 플랜트 — 실시간 지형 변형(바퀴 자국) 엔진</div><div class="pdlg-body"><p>현대자동차 산학프로젝트 L-Project 달 로버 12축 HILS 시스템의 플랜트(Isaac Sim + OmniLRS)에서, 바퀴 자국이 생기지 않거나 주행이 멈추던 지형 변형 엔진을 분석·개선했습니다.</p><ul><li>렌더–충돌 메시 분리로 물리 스텝 중단 해결</li><li>휠 주변 1.5 cm 타일 + Fabric 부분 갱신 → 변형 활성 주행 RTF 0.008 → 0.48~0.50</li><li>NASA VIPER 휠 그라우저 무늬가 보이는 연속 자국 (폭·주기 휠 기하와 1~3 % 일치)</li></ul></div><div class="pdlg-links"><a href="terrain-deformation.html">→ 프로젝트 노트 읽기</a></div></div></dialog>
+  <dialog class="pdlg" id="dlg-twin"><div class="pdlg-in"><button class="pdlg-x" type="button" aria-label="닫기">×</button><div class="pcard-period">2026.04 ~</div><h2 class="pdlg-title">Lunar Digital Twin · HILS</h2><div class="pdlg-name">현대자동차 산학프로젝트 — L-Project 달 로버 12축 HILS 시스템</div><div class="pdlg-body"><p>달 탐사 로버의 실제 임무를 검증하기 위한 디지털 트윈·HILS 환경을 만드는 산학 과제입니다. 학부연구생 팀장.</p><ul><li>12축 로버 USD 모델 구성 (조인트·드라이브·질량)</li><li>Isaac Sim ↔ Jetson 연동</li></ul></div><div class="pdlg-links"></div></div></dialog>
+  <dialog class="pdlg" id="dlg-dem"><div class="pdlg-in"><button class="pdlg-x" type="button" aria-label="닫기">×</button><div class="pcard-period">2026-1</div><h2 class="pdlg-title">DEM Lunar Terrain Simulation</h2><div class="pdlg-name">DEM 기반 3D 달 지형 생성 및 Isaac Sim 로봇 주행 시뮬레이션</div><span class="badge-award">🏆 성과공유회 최우수상(1위)</span><div class="pdlg-body"><p>DEM(Digital Elevation Model) 데이터로 달 표면 3D 지형을 만들고, Isaac Sim에서 Husky UGV 주행 시뮬레이션까지 이어지는 End-to-End 파이프라인을 완성했습니다.</p></div><div class="pdlg-links"></div></div></dialog>
+  <dialog class="pdlg" id="dlg-req"><div class="pdlg-in"><button class="pdlg-x" type="button" aria-label="닫기">×</button><div class="pcard-period">2025 여름</div><h2 class="pdlg-title">Space Mobility Requirements</h2><div class="pdlg-name">현대자동차 산학협력 — 우주탐사 유무인 모빌리티 요구사항 및 서비스 시나리오 도출</div><div class="pdlg-body"><p>달·화성 탐사 로버의 국내외 기술동향을 분석하고, 타행성 탐사 분야에서 학교가 특성화할 기술 분야를 도출했습니다.</p></div><div class="pdlg-links"></div></div></dialog>
+  <dialog class="pdlg" id="dlg-lerobot"><div class="pdlg-in"><button class="pdlg-x" type="button" aria-label="닫기">×</button><div class="pcard-period">2026-1</div><h2 class="pdlg-title">Robot Imitation Learning</h2><div class="pdlg-name">LeRobot SO-ARM — Teleoperation & Imitation Learning (AI 튜터링 · 팀 기니허브)</div><span class="badge-award">🏆 성과공유회 최우수상(1위)</span><div class="pdlg-body"><p>튜터로서 LeRobot 프레임워크 기반 SO-ARM 로봇으로 Teleoperation과 Imitation Learning(ACT) 파이프라인을 구현했습니다.</p></div><div class="pdlg-links"></div></div></dialog>
+  <dialog class="pdlg" id="dlg-platform"><div class="pdlg-in"><button class="pdlg-x" type="button" aria-label="닫기">×</button><div class="pcard-period">2025-1</div><h2 class="pdlg-title">Modular Mobile Platform</h2><div class="pdlg-name">HSU 이동플랫폼 개발 (진로탐색제)</div><span class="badge-award">🏆 성과공유회 최우수상(1위)</span><div class="pdlg-body"><p>하드웨어를 기능 단위로 재구성할 수 있는 추상화 아키텍처를 설계했습니다.</p><ul><li>ROS2 노드 단위 모듈형 구조 — 센서·제어·인지·조작 독립 교체</li><li>이동·조작·인지 통합 운용 환경</li><li>다양한 로봇 응용에 재사용 가능한 구조</li></ul></div><div class="pdlg-links"></div></div></dialog>
+  <dialog class="pdlg" id="dlg-ev"><div class="pdlg-in"><button class="pdlg-x" type="button" aria-label="닫기">×</button><div class="pcard-period">2024-2</div><h2 class="pdlg-title">DIY EV Platform</h2><div class="pdlg-name">HSU 자작 전기차 플랫폼 개발 (산학공동연구)</div><div class="pdlg-body"><p>전기차 플랫폼 2대를 직접 제작하고 ROS2 노드를 개발했습니다. 하드웨어 설계부터 소프트웨어 인터페이스까지 참여했습니다.</p></div><div class="pdlg-links"></div></div></dialog>
+  <script>
+  document.querySelectorAll('[data-open]').forEach(function(b){b.addEventListener('click',function(){var d=document.getElementById(b.dataset.open);if(d&&d.showModal)d.showModal();});});
+  document.querySelectorAll('dialog.pdlg').forEach(function(d){d.addEventListener('click',function(e){if(e.target===d)d.close();});d.querySelector('.pdlg-x').addEventListener('click',function(){d.close();});});
+  if(location.hash){var h=document.getElementById(location.hash.slice(1));if(h&&h.showModal)h.showModal();}
+  </script>
+
 </div>
 </body>
 </html>
