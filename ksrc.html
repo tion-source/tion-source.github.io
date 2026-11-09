@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 대한민국 우주로버 챌린지 — TION LAB</title>
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=202611100114">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="logo" href="index.html"><img src="assets/logo.png" alt="TION LAB — Thinking In Open Nature"></a>
+    <div class="name">박시현 · Sihyeon Park <span class="nick">(Tion)</span></div>
+    <div class="motto"><b>T</b>hinking <b>I</b>n <b>O</b>pen <b>N</b>ature</div>
+    <nav class="nav">
+      <a class="nav-item" href="index.html">홈</a>
+      <a class="nav-item" href="research.html">연구분야</a>
+      <a class="nav-item active" href="mobility.html">프로젝트</a>
+      <a class="nav-item" href="papers.html">논문·성과</a>
+      <a class="nav-item" href="news.html">소식</a>
+      <a class="nav-item" href="contact.html">연락처</a>
+    </nav>
+    <div class="sidebar-footer">© 2026 TION LAB</div>
+  </aside>
+  <main class="main">
+    <header class="page-header">
+      <h1 class="page-title">2026 대한민국 우주로버 챌린지</h1>
+      <p class="page-sub">위치 기준점을 직접 설치하는 탐사 로버 — 앵커 투하 메커니즘과 앵커 하우징 설계</p>
+    </header>
+    <section>
+      <div class="section-head"><span class="section-title">Overview</span><div class="section-line"></div></div>
+      <div class="info-table">
+        <div class="info-row"><span class="info-k">기간</span><span class="info-v">2026.07 ~ 2026.10</span></div>
+        <div class="info-row"><span class="info-k">분류</span><span class="info-v">대회</span></div>
+        <div class="info-row"><span class="info-k">주관</span><span class="info-v">우주항공청(KASA)</span></div>
+        <div class="info-row"><span class="info-k">팀</span><span class="info-v">아르케 엠원(Arche_M1) · 지도교수 1명, 학부생 5명</span></div>
+        <div class="info-row"><span class="info-k">성과</span><span class="info-v">23개 팀 중 본선 8팀 진출 · <span class="badge-award" style="display:inline-block">🏆 임무 부문 우수상 · 경상남도지사상</span></span></div>
+        <div class="info-row"><span class="info-k">역할</span><span class="info-v">앵커 투하 메커니즘 설계·제작, 앵커 하우징(바요넷) 모델링, 로버 차체 설계·제작(휠 제외)</span></div>
+      </div>
+      <p class="prose">로버가 주행하면서 UWB 앵커를 지형에 직접 내려놓고, 그 앵커들을 기준점 삼아 IMU와 함께 3차원 위치를 추정하는 시스템입니다. 위치 추정은 팀 작업이고(시뮬레이션 기준 오차 2~7 cm), 이 페이지에는 제가 맡은 <strong>앵커 투하 메커니즘</strong>과 <strong>앵커 하우징</strong>을 정리했습니다.</p>
+
+    </section>
+    <section>
+      <div class="section-head"><span class="section-title">01 · Anchor Drop Mechanism</span><div class="section-line"></div></div>
+      <div class="split">
+        <figure class="fig"><img src="assets/ksrc-anchor.jpg" alt="원통형 앵커 하우징과 서보 박스"><figcaption>원통형 앵커 하우징 옆에 서보 박스를 붙인 투하 모듈</figcaption></figure>
+        <div>
+          <h3 class="sub">구조</h3>
+          <ul class="prose-list">
+            <li>앵커는 원통형 하우징 안에 들어가 있고, 옆면의 서보 기어가 바닥을 받치고 있습니다.</li>
+            <li>서보가 <strong>90° 회전</strong>하면 받침이 열리고, 앵커는 <strong>중력으로 낙하</strong>합니다.</li>
+          </ul>
+          <h3 class="sub">왜 이렇게 했나</h3>
+          <ul class="prose-list">
+            <li>스프링·래치 같은 부품 없이 서보 하나로 끝나서 고장 날 곳이 적습니다.</li>
+            <li>대회 현장에서는 한 번에 확실히 떨어지는 게 정밀한 동작보다 중요했습니다.</li>
+            <li>3D 프린팅 부품만으로 만들 수 있어 수정·재출력이 빨랐습니다.</li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+    <section>
+      <div class="section-head"><span class="section-title">02 · Small-Angle Bayonet Housing</span><div class="section-line"></div></div>
+      <p class="prose">앵커(UWB 비콘) 하우징의 뚜껑을 <strong>약 20°만 돌려서 잠그는 소각도 바요넷</strong>으로 설계했습니다. 흔한 90° 쿼터턴 대신 짧은 회전으로 잠기게 해서, 현장에서 빠르게 열고 닫을 수 있습니다.</p>
+      <div class="steps">
+        <div class="step"><span class="step-no">1</span><span class="step-t">삽입</span><span class="step-d">러그를 가이드 슬롯 입구에 맞춰 넣기</span></div>
+        <div class="step"><span class="step-no">2</span><span class="step-t">약 20° 회전</span><span class="step-d">러그가 슬롯을 따라 이동</span></div>
+        <div class="step"><span class="step-no">3</span><span class="step-t">러그 걸림</span><span class="step-d">걸림면 뒤로 들어가 축 방향 고정</span></div>
+        <div class="step"><span class="step-no">4</span><span class="step-t">분리</span><span class="step-d">반대로 같은 각도만큼 돌려 빼기</span></div>
+      </div>
+      <div class="rgrid" style="margin-top:12px">
+        <div class="rcard"><div class="rcard-title">구성</div><p>Bayonet Lug(돌출부) · Guide Slot(회전 경로 홈) · Retaining Face(축 방향 이탈을 막는 걸림면) · Stopper(회전 끝 위치 제한)</p></div>
+        <div class="rcard"><div class="rcard-title">왜 비콘에 바요넷인가</div><p>비콘은 위치 추정의 기준점이라 매번 같은 자리에 정확히 다시 끼워져야 하고, 배터리 교체·점검을 위해 빨리 열려야 합니다. 바요넷은 두 조건을 같이 만족합니다.</p></div>
+        <div class="rcard"><div class="rcard-title">신호를 위한 설계</div><p>UWB 안테나의 방사 방향을 하우징이 가리지 않게 배치하고, 안테나 주변에 금속 부품을 두지 않았습니다.</p></div>
+        <div class="rcard"><div class="rcard-title">현장 내구성</div><p>러그–슬롯 유격을 줄여 흔들림을 막고, 주행 진동에 풀리지 않도록 회전 끝에 Stopper를 두었습니다. 3D 프린팅 적층 방향과 러그 두께도 반복 탈착 기준으로 정했습니다.</p></div>
+      </div>
+
+    </section>
+    <section>
+      <div class="section-head"><span class="section-title">03 · Tools</span><div class="section-line"></div></div>
+      <div class="tag-grid"><span class="tag">Fusion 360</span><span class="tag">3D Printing</span><span class="tag">Servo Actuation</span><span class="tag">UWB</span></div>
+      <a class="more" href="mobility.html">← 프로젝트 목록</a>
+
+    </section>
+  </main>
+</div>
+</body>
+</html>
