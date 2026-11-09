@@ -206,3 +206,5 @@ a.pcard { text-decoration: none; }
 .subcard .more { margin-top: 0.2rem; }
 .status.plan { color: #6B5FA0; background: var(--accent-bg); border-color: var(--accent-lt); }
 .page-header .badge-award { display: inline-block; margin-top: 0.6rem; }
+.fig-wide { margin-bottom: 1.2rem; }
+.fig-wide img { max-width: 720px; background: #F5F2EC; }
