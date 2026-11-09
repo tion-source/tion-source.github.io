@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=202611100213">
+<link rel="stylesheet" href="assets/site.css?v=202611100224">
 </head>
 <body>
 <div class="layout">
@@ -97,5 +97,7 @@
     </section>
   </main>
 </div>
+<div class="lb" id="lb" hidden><img alt=""></div>
+<script>(function(){var lb=document.getElementById("lb");if(!lb)return;var im=lb.querySelector("img");document.querySelectorAll(".fig img").forEach(function(i){i.addEventListener("click",function(){im.src=i.src;im.alt=i.alt;lb.hidden=false;});});lb.addEventListener("click",function(){lb.hidden=true;});document.addEventListener("keydown",function(e){if(e.key==="Escape")lb.hidden=true;});})();</script>
 </body>
 </html>
