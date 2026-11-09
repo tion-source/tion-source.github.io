@@ -219,3 +219,4 @@ a.pcard { text-decoration: none; }
 .lb img { max-width: 94vw; max-height: 92vh; border-radius: 10px; background: #F5F2EC; }
 @media (max-width: 760px) { .fig-row { grid-template-columns: 1fr 1fr; } }
 .fig-row img { height: 280px; width: 100%; object-fit: contain; }
+.fig-pair { max-width: 560px; margin-bottom: 1.2rem; }
