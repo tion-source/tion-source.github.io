@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=202611100334">
+<link rel="stylesheet" href="assets/site.css?v=202611100400">
 </head>
 <body>
 <div class="layout">
@@ -30,12 +30,64 @@
     <header class="page-header">
       <div class="pcard-top" style="justify-content:flex-start;gap:10px"><span class="pcard-period">2025 1학기</span></div>
       <h1 class="page-title" style="margin-top:6px">Modular Mobile Platform</h1>
-      <p class="page-sub">HSU 이동플랫폼 개발 (진로탐색제)</p>
+      <p class="page-sub">HSU 이동 로봇 표준 플랫폼 — ROS2 모듈형 이동 로봇</p>
       <span class="badge-award">🏆 성과공유회 최우수상(1위)</span>
     </header>
     <section>
       <div class="section-head"><span class="section-title">Overview</span><div class="section-line"></div></div>
-      <div class="pdlg-body"><p>하드웨어를 기능 단위로 재구성할 수 있는 추상화 아키텍처를 설계했습니다.</p><ul><li>ROS2 노드 단위 모듈형 구조 — 센서·제어·인지·조작 독립 교체</li><li>이동·조작·인지 통합 운용 환경</li><li>다양한 로봇 응용에 재사용 가능한 구조</li></ul></div>
+      <div class="info-table">
+        <div class="info-row"><span class="info-k">기간</span><span class="info-v">2025 1학기 (진로탐색학점제)</span></div>
+        <div class="info-row"><span class="info-k">팀</span><span class="info-v">학부생 4명</span></div>
+        <div class="info-row"><span class="info-k">성과</span><span class="info-v"><span class="badge-award" style="display:inline-block">🏆 성과공유회 최우수상(1위)</span></span></div>
+        <div class="info-row"><span class="info-k">역할</span><span class="info-v">SBC 연결 및 전원부(파워 서플라이) 설치, 카메라 노드 구현, 시스템 구조 분석 및 블록 다이어그램 작성</span></div>
+      </div>
+      <p class="prose">센서·제어·인지 기능을 ROS2 노드 단위로 나눠, 하드웨어가 바뀌어도 전체를 다시 만들지 않고 모듈만 갈아 끼울 수 있는 이동 로봇 플랫폼을 만들었습니다. 목표는 「Design Once, Extend Anywhere」 — 한 번 만든 구조를 이동 로봇, 로봇팔, 물류·서비스 로봇에 그대로 재사용하는 것입니다.</p>
+
+    </section>
+    <section>
+      <div class="section-head"><span class="section-title">01 · System Architecture</span><div class="section-line"></div></div>
+      <div class="fig-row">
+        <figure class="fig"><img src="assets/platform-robot.jpg" alt="모니터를 탑재한 HSU 이동 로봇"><figcaption>완성된 플랫폼 — 상단 모니터로 주행 상태·영상 실시간 표시</figcaption></figure>
+        <figure class="fig"><img src="assets/platform-diagram.jpg" alt="HSU 표준 플랫폼 블록 다이어그램"><figcaption>전원·통신 블록 다이어그램 — 48 V 배터리, 비상정지, Orange Pi 5B, 모터 드라이버</figcaption></figure>
+      </div>
+      <ul class="prose-list">
+        <li><strong>하드웨어</strong> — Orange Pi 5B(SBC), 2륜 DC 모터 + 모터 드라이버, 카메라, LiDAR, Logitech F710 조이스틱, 상단 모니터</li>
+        <li><strong>소프트웨어</strong> — Ubuntu + ROS2, Publisher/Subscriber 구조의 조이스틱 · 모터 · 카메라 노드</li>
+        <li><strong>모듈 분리</strong> — 노드끼리는 토픽으로만 연결해, 특정 하드웨어를 바꿔도 해당 노드만 수정</li>
+      </ul>
+
+    </section>
+    <section>
+      <div class="section-head"><span class="section-title">02 · Drive Control</span><div class="section-line"></div></div>
+      <ul class="prose-list">
+        <li><strong>Differential Drive 방식 조향</strong> — 조이스틱 입력(왼쪽 스틱 Y축 = 속도, 오른쪽 스틱 = 각도)을 선속도 v · 각속도 ω로 바꾸고, 좌우 바퀴를 독립 제어해 직진·곡선·제자리 회전을 하나의 제어 로직으로 처리</li>
+        <li>급격한 조향 입력을 막는 가속도 제한·속도 보정, 터미널로 모터 출력값을 실시간 확인</li>
+      </ul>
+      <div class="fig-row">
+        <figure class="fig"><img src="assets/platform-traj.jpg" alt="시뮬레이션 대비 실제 주행 궤적"><figcaption>목표 궤적(시뮬레이션) vs 실제 로봇 궤적 — 경로 형태 유지</figcaption></figure>
+        <figure class="fig"><img src="assets/platform-deadzone.jpg" alt="dead-zone 적용 전후 속도 명령"><figcaption>Dead-zone 적용 전후 — 정지 상태 미세 진동(jitter) 제거</figcaption></figure>
+      </div>
+      <h3 class="sub">문제 → 해결</h3>
+      <ul class="prose-list">
+        <li><strong>정지했는데 로봇이 떨림</strong> — 조이스틱 raw 입력의 노이즈 때문에 정지 상태에서도 작은 속도 명령이 계속 나감 → 임계값 이하 입력을 무시하는 <strong>dead-zone</strong> 적용으로 idle 진동 제거</li>
+        <li><strong>저속 정밀도 vs 고속 출력</strong> — 입력과 출력 속도를 <strong>비선형 매핑</strong>해 저속에서는 섬세하게, 고속에서는 충분한 출력이 나오도록 설계</li>
+      </ul>
+
+    </section>
+    <section>
+      <div class="section-head"><span class="section-title">03 · Camera Perception</span><div class="section-line"></div></div>
+      <ul class="prose-list">
+        <li>체커보드 캘리브레이션으로 렌즈 왜곡 보정 (내부 파라미터·왜곡 계수 추정)</li>
+        <li>Grayscale → Gaussian Blur → Canny Edge → Hough Transform으로 주행 라인 검출, 결과를 주행 제어 노드로 전달</li>
+      </ul>
+
+    </section>
+    <section>
+      <div class="section-head"><span class="section-title">04 · After the Program</span><div class="section-line"></div></div>
+      <figure class="fig fig-half"><img src="assets/platform-yolo.jpg" alt="YOLOv5 실내 객체 인식"><figcaption>프로그램 이후 — YOLOv5 실내 객체 인식 테스트 (10개 클래스 소규모 데이터셋)</figcaption></figure>
+      <ul class="prose-list">
+        <li>진로탐색제가 끝난 뒤에도 같은 플랫폼 위에 <strong>YOLOv5 실내 객체 인식</strong>과 <strong>로봇팔 모듈</strong>을 추가로 통합 — 모듈형 구조가 실제로 확장된다는 것을 확인</li>
+      </ul>
 
     </section>
       <div class="pdlg-links"><a href="mobility.html">← 프로젝트 목록</a></div>
