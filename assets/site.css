@@ -208,3 +208,14 @@ a.pcard { text-decoration: none; }
 .page-header .badge-award { display: inline-block; margin-top: 0.6rem; }
 .fig-wide { margin-bottom: 1.2rem; }
 .fig-wide img { max-width: 720px; background: #F5F2EC; }
+
+/* Figures (half size) + lightbox */
+.fig-row { display: grid; grid-template-columns: repeat(2, minmax(0, 340px)); gap: 14px; margin-bottom: 1.2rem; }
+.fig-half { max-width: 360px; margin-bottom: 1rem; }
+.fig img { cursor: zoom-in; background: #F5F2EC; }
+.diagram { max-width: 700px; margin: 0.5rem 0 1.2rem; }
+.lb { position: fixed; inset: 0; background: rgba(25,22,30,.82); display: flex; align-items: center; justify-content: center; z-index: 100; cursor: zoom-out; padding: 3vh 3vw; }
+.lb[hidden] { display: none; }
+.lb img { max-width: 94vw; max-height: 92vh; border-radius: 10px; background: #F5F2EC; }
+@media (max-width: 760px) { .fig-row { grid-template-columns: 1fr 1fr; } }
+.fig-row img { height: 280px; width: 100%; object-fit: contain; }
