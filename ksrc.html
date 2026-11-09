@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=202611100224">
+<link rel="stylesheet" href="assets/site.css?v=202611100230">
 </head>
 <body>
 <div class="layout">
@@ -46,10 +46,7 @@
     </section>
     <section>
       <div class="section-head"><span class="section-title">01 · Anchor Drop Mechanism</span><div class="section-line"></div></div>
-      <div class="fig-row">
-        <figure class="fig"><img src="assets/ksrc-tube.jpg" alt="앵커 튜브와 걸쇠 모듈"><figcaption>앵커 튜브 — 옆면 창으로 서보 혼이 드나듦</figcaption></figure>
-        <figure class="fig"><img src="assets/ksrc-latch.jpg" alt="2단 서보 걸쇠 모듈"><figcaption>걸쇠 모듈 — 위아래 2단 SG90 + 연장한 단일 암 혼</figcaption></figure>
-      </div>
+      <figure class="fig fig-pair"><img src="assets/ksrc-tube-pair.jpg" alt="앵커 튜브와 2단 서보 걸쇠 — 두 방향에서 본 모습"><figcaption>앵커 튜브와 2단 서보 걸쇠 — 연장한 단일 암 혼이 튜브 옆면 창으로 들어감 (클릭하면 확대)</figcaption></figure>
       <div>
         <div>
           <h3 class="sub">구조 — 튜브 2개 × 2단 서보 걸쇠</h3>
@@ -80,16 +77,24 @@
     <section>
       <div class="section-head"><span class="section-title">02 · Small-Angle Bayonet Housing</span><div class="section-line"></div></div>
       <p class="prose">앵커(UWB 비콘) 하우징의 뚜껑을 <strong>약 20°만 돌려서 잠그는 소각도 바요넷</strong>으로 설계했습니다. 흔한 90° 쿼터턴 대신 짧은 회전으로 잠기게 해서, 현장에서 빠르게 열고 닫을 수 있습니다.</p>
-      <figure class="fig fig-half"><img src="assets/ksrc-anchor-model.jpg" alt="앵커 하우징과 바요넷 뚜껑 분해도"><figcaption>앵커 분해도 — 위: 러그 3개가 달린 뚜껑, 아래: 걸림턱이 있는 하우징 (Fusion 360 모델)</figcaption></figure>
+      <div class="fig-row">
+        <figure class="fig"><img src="assets/ksrc-bayonet.gif" alt="바요넷 체결 애니메이션"><figcaption>체결 동작 — 뚜껑을 내리고 약 20° 돌리면 러그(진보라)가 걸림턱(빨강) 아래로 들어가 잠김</figcaption></figure>
+        <figure class="fig"><img src="assets/ksrc-anchor-model.jpg" alt="앵커 하우징과 뚜껑 분해도"><figcaption>앵커 분해도 — 러그 3개가 달린 뚜껑과 걸림턱이 있는 하우징 (Fusion 360)</figcaption></figure>
+      </div>
       <div class="diagram"><svg viewBox="0 0 700 272" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="소각도 바요넷 체결 과정" style="width:100%;font-family:Inter,'Apple SD Gothic Neo','Noto Sans KR',sans-serif"><defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1A1A18"/></marker></defs>
 <text x="0" y="20" font-size="16" font-weight="700" fill="#1A1A18">소각도 바요넷 체결 과정 — 쿼터턴(90°)이 아닌 약 20° 회전</text>
 <g transform="translate(0,0)"><rect x="0" y="40" width="220" height="190" rx="12" fill="#FBFAF7" stroke="#D6D2C8"/><text x="16" y="66" font-size="15" font-weight="700" fill="#1A1A18">① 삽입</text><text x="16" y="86" font-size="12.5" fill="#5C5C52">걸림턱 사이 빈 구간으로 내리기</text><rect x="10" y="196" width="200" height="22" fill="#E3DED4"/><rect x="180" y="128" width="14" height="68" fill="#C0392B"/><text x="187" y="122" text-anchor="middle" font-size="11.5" fill="#C0392B">Stopper</text><rect x="10" y="98" width="148" height="8" rx="2" fill="#B8AFD9"/><rect x="40" y="106" width="38" height="42" fill="#8E86C0"/><rect x="40" y="148" width="38" height="12" fill="#3B3070"/><rect x="100" y="148" width="80" height="14" fill="#E8B4B4" fill-opacity="0.92" stroke="#C0392B"/><path d="M92,112 L92,140" stroke="#1A1A18" stroke-width="2" marker-end="url(#ah)"/></g><g transform="translate(240,0)"><rect x="0" y="40" width="220" height="190" rx="12" fill="#FBFAF7" stroke="#D6D2C8"/><text x="16" y="66" font-size="15" font-weight="700" fill="#1A1A18">② 약 20° 회전</text><text x="16" y="86" font-size="12.5" fill="#5C5C52">러그 발이 걸림턱 아래로 이동</text><rect x="10" y="196" width="200" height="22" fill="#E3DED4"/><rect x="180" y="128" width="14" height="68" fill="#C0392B"/><text x="187" y="122" text-anchor="middle" font-size="11.5" fill="#C0392B">Stopper</text><rect x="10" y="116" width="148" height="8" rx="2" fill="#B8AFD9"/><rect x="92" y="124" width="38" height="42" fill="#8E86C0"/><rect x="92" y="166" width="38" height="12" fill="#3B3070"/><rect x="100" y="148" width="80" height="14" fill="#E8B4B4" fill-opacity="0.92" stroke="#C0392B"/><path d="M62,172 L86,172" stroke="#1A1A18" stroke-width="2" marker-end="url(#ah)"/></g><g transform="translate(480,0)"><rect x="0" y="40" width="220" height="190" rx="12" fill="#FBFAF7" stroke="#D6D2C8"/><text x="16" y="66" font-size="15" font-weight="700" fill="#1A1A18">③ 잠금</text><text x="16" y="86" font-size="12.5" fill="#5C5C52">위로 안 빠지고 Stopper에서 정지</text><rect x="10" y="196" width="200" height="22" fill="#E3DED4"/><rect x="180" y="128" width="14" height="68" fill="#C0392B"/><text x="187" y="122" text-anchor="middle" font-size="11.5" fill="#C0392B">Stopper</text><rect x="10" y="116" width="148" height="8" rx="2" fill="#B8AFD9"/><rect x="142" y="124" width="38" height="42" fill="#8E86C0"/><rect x="142" y="166" width="38" height="12" fill="#3B3070"/><rect x="100" y="148" width="80" height="14" fill="#E8B4B4" fill-opacity="0.92" stroke="#C0392B"/><path d="M60,176 L60,148" stroke="#1A1A18" stroke-width="2" marker-end="url(#ah)"/><text x="68" y="150" font-size="17" font-weight="700" fill="#C0392B">✕</text></g><g transform="translate(0,262)"><rect x="0" y="-11" width="14" height="12" fill="#B8AFD9"/><text x="20" y="0" font-size="12.5" fill="#5C5C52">뚜껑</text><rect x="62" y="-11" width="14" height="12" fill="#3B3070"/><text x="82" y="0" font-size="12.5" fill="#5C5C52">러그 발 (3개, 120° 간격)</text><rect x="250" y="-11" width="14" height="12" fill="#E8B4B4" stroke="#C0392B"/><text x="270" y="0" font-size="12.5" fill="#5C5C52">하우징 걸림턱</text><rect x="370" y="-11" width="14" height="12" fill="#C0392B"/><text x="390" y="0" font-size="12.5" fill="#5C5C52">Stopper</text><text x="700" y="0" text-anchor="end" font-size="12" fill="#8A8A7E">원둘레를 펼쳐 옆에서 본 그림</text></g></svg></div>
-      <div class="rgrid">
-        <div class="rcard"><div class="rcard-title">구성</div><p>Bayonet Lug(돌출부) · Guide Slot(회전 경로 홈) · Retaining Face(축 방향 이탈을 막는 걸림면) · Stopper(회전 끝 위치 제한)</p></div>
-        <div class="rcard"><div class="rcard-title">왜 바요넷인가</div><p><b>배터리 교체·점검이 쉬워야 했습니다</b> — 나사 없이 약 20°만 돌리면 열리고 닫힙니다.<br><b>달 지형의 모래·먼지를 막아야 했습니다</b> — 뚜껑이 하우징을 덮어 내부 UWB 모듈과 배터리를 보호합니다.</p></div>
-        <div class="rcard"><div class="rcard-title">신호를 위한 설계</div><p>UWB 안테나의 방사 방향을 하우징이 가리지 않게 배치하고, 안테나 주변에 금속 부품을 두지 않았습니다.</p></div>
-        <div class="rcard"><div class="rcard-title">현장 내구성</div><p>러그–슬롯 유격을 줄여 흔들림을 막고, 주행 진동에 풀리지 않도록 회전 끝에 Stopper를 두었습니다. 3D 프린팅 적층 방향과 러그 두께도 반복 탈착 기준으로 정했습니다.</p></div>
-      </div>
+      <h3 class="sub">설계 핵심</h3>
+      <ul class="prose-list">
+        <li><strong>배터리 교체·점검이 쉽게</strong> — 나사·공구 없이 약 20°만 돌리면 열고 닫힙니다.</li>
+        <li><strong>달 지형의 모래·먼지 차단</strong> — 뚜껑이 하우징 윗면 전체를 덮어 내부 UWB 모듈과 배터리를 보호합니다.</li>
+        <li><strong>투하 충격에도 안 열리게</strong> — 축 방향은 걸림턱이 막고 있어, 로버에서 떨어져 착지해도 뚜껑이 빠지지 않습니다.</li>
+        <li><strong>고르게 잠기게</strong> — 러그 3개를 120° 간격으로 배치해 둘레 세 곳에서 균등하게 눌러, 뚜껑이 기울지 않습니다.</li>
+        <li><strong>과회전 방지</strong> — 회전 끝에 Stopper를 둬서 항상 같은 위치에서 멈춥니다.</li>
+        <li><strong>3D 프린팅 공차 반영</strong> — 러그 발 끝과 홈 사이에 반경 0.3 mm 여유를 둬서, 출력 오차가 있어도 끼지 않고 돌아갑니다.</li>
+        <li><strong>투하 튜브에 맞춘 외경</strong> — 앵커 Ø78 mm, 튜브 Ø80 mm.</li>
+        <li><strong>신호 간섭 최소화</strong> — UWB 안테나 주변에 금속 부품을 두지 않았습니다.</li>
+      </ul>
 
     </section>
     <section>
