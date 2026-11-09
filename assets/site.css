@@ -157,3 +157,24 @@ a { color: inherit; }
 .rcard-title { font-size: 15.5px; font-weight: 600; margin-bottom: 0.45rem; }
 .rcard p { font-size: 14px; color: var(--sub); line-height: 1.7; }
 @media (max-width: 760px) { .rgrid { grid-template-columns: 1fr; } .rtitle { font-size: 28px; } .rarea-title { font-size: 22px; } }
+
+/* Project detail */
+.info-table { border-top: 1px solid var(--border); margin-bottom: 1rem; }
+.info-row { display: flex; gap: 1rem; padding: 9px 2px; border-bottom: 1px solid var(--border); font-size: 13.5px; }
+.info-k { min-width: 56px; color: var(--muted); font-family: var(--mono); font-size: 12px; padding-top: 1px; }
+.info-v { color: var(--text); }
+.prose { font-size: 14px; color: var(--sub); line-height: 1.8; margin-bottom: 0.75rem; }
+.prose strong { color: var(--text); }
+.prose-list { padding-left: 1.1rem; margin-bottom: 0.9rem; }
+.prose-list li { font-size: 13.5px; color: var(--sub); line-height: 1.75; }
+.prose-list strong { color: var(--text); }
+.sub { font-size: 14px; font-weight: 600; margin: 0.2rem 0 0.4rem; }
+.split { display: grid; grid-template-columns: 260px 1fr; gap: 1.5rem; align-items: start; }
+.fig img { width: 100%; border-radius: 10px; border: 1px solid var(--border); display: block; }
+.fig figcaption { font-size: 12px; color: var(--muted); margin-top: 6px; }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.step { background: #FBFAF7; border: 1px solid var(--border); border-radius: 10px; padding: 0.8rem 0.9rem; display: flex; flex-direction: column; gap: 4px; }
+.step-no { font-family: var(--mono); font-size: 11px; color: var(--violet); }
+.step-t { font-size: 14px; font-weight: 600; }
+.step-d { font-size: 12.5px; color: var(--sub); line-height: 1.6; }
+@media (max-width: 760px) { .split { grid-template-columns: 1fr; } .steps { grid-template-columns: 1fr 1fr; } }
