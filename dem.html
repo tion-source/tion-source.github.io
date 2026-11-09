@@ -82,14 +82,14 @@
         <li>오픈소스 로커보기 모델(Printables 공개 모델, DTU RoboCup 계단 등반 로버)을 기반으로 3D 프린팅·조립</li>
         <li>구동 모터 6개 + <strong>조향 서보 6개</strong>, 제어는 <strong>Jetson Orin Nano</strong></li>
         <li><strong>Fusion 360 재설계</strong> — 서보 위 기어(20T)의 규격이 맞지 않아 수정, 모터 크기에 맞춰 motor arm을 다시 팜</li>
-        <li>6개 휠 모터와 서보 정상 구동 확인</li>
+        <li>실물 로버 단독 주행 확인</li>
       </ul>
       <h3 class="sub">시뮬레이션 · Sim-to-Real</h3>
       <ul class="prose-list">
         <li>Blender에서 휠 계층(WHL_FL/FR/ML/MR/RL/RR) 정리 → USD 변환 → Isaac Sim 물리 조인트 적용</li>
         <li>우리 팀 달 지형과 평지·험지·경사·모래 지형에서 주행 확인</li>
-        <li>드라이브 모드 3종 실시간 전환 — 종방향(직진), 횡방향(크랩), 제자리 회전 (키보드·조이스틱)</li>
-        <li><strong>Sim-to-Real (미완성)</strong> — Isaac Sim 노트북과 Jetson의 ROS2 Domain ID를 맞춰 시뮬레이션 구동 명령(/rover_driving_cmd)을 실물 모터로 보내는 구조를 설계했지만, 실물 로버와의 동기화까지는 완성하지 못했습니다.</li>
+        <li>드라이브 모드 3종 실시간 전환 — 종방향(직진), 횡방향(크랩), 제자리 회전 (키보드·조이스틱, 시뮬레이션 내)</li>
+        <li><strong>Sim-to-Real (미완성)</strong> — Isaac Sim 노트북과 Jetson의 ROS2 Domain ID를 맞춰 시뮬레이션 구동 명령(/rover_driving_cmd)을 실물 모터로 보내는 구조를 설계했습니다. 시뮬레이션 명령으로 <strong>실물 모터 1개가 움직이는 것까지 확인</strong>했고, 6륜 전체 동기화는 완성하지 못했습니다.</li>
       </ul>
       <h3 class="sub">설계 핵심 · 배운 점</h3>
       <ul class="prose-list">
@@ -97,7 +97,6 @@
         <li><strong>배선이 곧 설계</strong> — 서보 6개에 모터 6개까지 선이 12갈래라 정리가 가장 힘들었습니다. 다음 설계에서는 배선 경로를 처음부터 기구에 넣어야 한다는 걸 배웠습니다.</li>
         <li><strong>끝내지 못한 것</strong> — Sim-to-Real 동기화는 완성하지 못했습니다. 실물과 USD 모델을 같은 휠 계층으로 맞춰 둔 것이 다음 시도의 출발점이고, 이 경험이 이후 L-Project의 Isaac Sim ↔ Jetson 연동으로 이어졌습니다.</li>
       </ul>
-      <p class="prose">당시 다음 단계로 잡았던 지형 변형(바퀴 자국) 시뮬레이션은 이후 L-Project에서 이어서 진행하고 있습니다.</p>
 
     </section>
       <div class="pdlg-links"><a href="mobility.html">← 프로젝트 목록</a></div>
