@@ -341,6 +341,14 @@
     <li><strong>heave 1.0에서도 31 %는 실패한다.</strong> 35°는 마찰 한계라서, 배 걸림을 피해도 미끄러짐이 남습니다(Video 2).</li>
   </ul>
   <figure>
+    <video src="assets/ppo-s35-postures.mp4" poster="assets/ppo-s35-postures.jpg" controls muted loop playsinline preload="metadata"></video>
+    <figcaption><b>Video 3</b> 35°, 같은 출발 조건에서 고정 자세 세 개(왼쪽부터 heave 0.8 / heave 1.0 / heave 1.0 + pitch −0.6), 40초. 32초 시점 차체 기울기가 heave 0.8은 33°로 아직 경사 위인데, heave 1.0과 pitch를 섞은 자세는 21~23°로 정상에 걸쳐 있습니다. 세 자세 모두 이 에피소드에서는 정상(5 m)을 걸친 채 5.0~5.1 m에서 시간이 다 됐습니다. 마지막 장면은 시간 초과 후 출발점으로 리셋된 모습입니다.</figcaption>
+  </figure>
+  <figure>
+    <video src="assets/ppo-s35-policies.mp4" poster="assets/ppo-s35-policies.jpg" controls muted loop playsinline preload="metadata"></video>
+    <figcaption><b>Video 4</b> 35°, 같은 출발 조건에서 최적 고정 자세(heave 1.0) / PPO 관절 직접 제어 / PPO residual 1.0. 관절 직접 제어 정책은 32초에 앞쪽 관절을 낮춘 자세(부호를 맞추면 앞 −17°·−8°, 뒤 −4°·+4°)로 접근하다가 정상에서 네 관절을 모두 끝까지 폅니다. residual 정책은 처음부터 최대 높이로 가장 멀리(5.21 m) 갑니다. 이 에피소드에서는 셋 다 정상에 걸친 채 시간이 다 됐습니다. 성공률 55~69 %인 각도라 한 번의 에피소드는 실패할 수도 있고, 영상은 정상에서 무슨 일이 일어나는지 보여 주는 용도입니다.</figcaption>
+  </figure>
+  <figure>
     <video src="assets/ppo-s35-crest.mp4" poster="assets/ppo-s35-crest.jpg" controls muted loop playsinline preload="metadata"></video>
     <figcaption><b>Video 2</b> 35°, PPO(관절 직접 제어)의 실패 사례. 정상에서 네 관절을 모두 끝까지(±20°) 펴서 차체를 들어 올리지만 5.18 m에서 영상 기록(30초)이 끝납니다. 높이를 다 써도 넘지 못하는 경우입니다.</figcaption>
   </figure>
