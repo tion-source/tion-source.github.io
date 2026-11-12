@@ -349,6 +349,10 @@
     <figcaption><b>Video 4</b> 35°, 같은 출발 조건에서 최적 고정 자세(heave 1.0) / PPO 관절 직접 제어 / PPO residual 1.0. 관절 직접 제어 정책은 32초에 앞쪽 관절을 낮춘 자세(부호를 맞추면 앞 −17°·−8°, 뒤 −4°·+4°)로 접근하다가 정상에서 네 관절을 모두 끝까지 폅니다. residual 정책은 처음부터 최대 높이로 가장 멀리(5.21 m) 갑니다. 이 에피소드에서는 셋 다 정상에 걸친 채 시간이 다 됐습니다. 성공률 55~69 %인 각도라 한 번의 에피소드는 실패할 수도 있고, 영상은 정상에서 무슨 일이 일어나는지 보여 주는 용도입니다.</figcaption>
   </figure>
   <figure>
+    <video src="assets/ppo-s35-climbs.mp4" poster="assets/ppo-s35-climbs.jpg" controls muted loop playsinline preload="metadata"></video>
+    <figcaption><b>Video 5</b> 35° 성공 사례, 같은 출발 조건(시드 1). 왼쪽부터 최적 고정 자세(heave 1.0, 36.2초) / PPO 관절 직접 제어(29.0초) / PPO residual 1.0(30.9초). 셋 다 차체를 최대로 든 채 정상에 걸쳤다가 3초 안팎에 넘어갑니다. 정상 위 평지에서 고정 자세는 차체가 수평(0.2°)입니다. 한 에피소드라 도달 시간 차이는 우연일 수 있습니다(평가 832개의 중앙값은 31.3 / 33.7 / 31.4초).</figcaption>
+  </figure>
+  <figure>
     <video src="assets/ppo-s35-crest.mp4" poster="assets/ppo-s35-crest.jpg" controls muted loop playsinline preload="metadata"></video>
     <figcaption><b>Video 2</b> 35°, PPO(관절 직접 제어)의 실패 사례. 정상에서 네 관절을 모두 끝까지(±20°) 펴서 차체를 들어 올리지만 5.18 m에서 영상 기록(30초)이 끝납니다. 높이를 다 써도 넘지 못하는 경우입니다.</figcaption>
   </figure>
