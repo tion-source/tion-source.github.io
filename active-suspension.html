@@ -73,7 +73,8 @@
     <p><strong>한 줄 요약</strong> — 서스펜션을 고정한 VIPER는 30° 경사 정상에서 <strong>차체 하부 돌출부가 모서리에 걸려</strong> 멈췄습니다. PPO로 서스펜션 4축(+바퀴 속도)을 제어하자 30°를 100 % 넘었고, 35°에서는 차체 높이가, 40° 이상에서는 바퀴 마찰이 한계를 정했습니다.</p>
     <ul>
       <li>30° 등판 성공률: 고정 서스펜션 <strong>0.8 % → PPO 100 %</strong> (경사 에피소드 832개)</li>
-      <li>35°(동마찰 한계와 같은 각도): PPO 41.0~59.5 %(residual 시드 3개 평균 48.0 ± 10.0 %), 시험 각도에 맞춰 고른 최적 고정 자세 69.2 %</li>
+      <li>35°(동마찰 한계와 같은 각도): 시험 각도에 맞춰 고른 최적 고정 자세 69.2 %, PPO 관절 직접 제어 시드 3개 35.0 / 55.8 / <strong>88.0 %</strong>(평균 59.6 ± 26.7 %), residual 시드 3개 평균 48.0 ± 10.0 %</li>
+      <li>88 %를 낸 정책은 <strong>경사에서는 앞을 숙이고, 정상에서는 최대 높이로, 정상 위에서는 다시 수평으로</strong> 자세를 바꾸는 단계별 전략을 스스로 찾았습니다. 고정 자세로는 만들 수 없는 행동입니다.</li>
       <li>40°·45°: 모든 제어기 0 % — tan θ ≤ μ로 계산한 마찰 한계(동 35.0°, 정 42.0°)와 일치</li>
       <li>평지 차체 기울기(p95): 관절 직접 제어 PPO 7.6° → residual 구조 1.5°</li>
     </ul>
@@ -249,7 +250,7 @@
     <tr><td>20°</td><td class="n">100 % · 6.50 m · 20.9 s</td><td class="n">100 % · 6.50 m · 20.8 s</td><td class="n">—</td><td class="n">—</td></tr>
     <tr><td>25°</td><td class="n">93.8 % · 6.45 m · 29.2 s</td><td class="n">100 % · 6.50 m · 20.4 s</td><td class="n">—</td><td class="n">—</td></tr>
     <tr class="hl"><td>30°</td><td class="n">0.8 % · 5.19 m · —</td><td class="n">100 % · 6.50 m · 20.9 s</td><td class="n">100 %</td><td class="n">100 %</td></tr>
-    <tr><td>35°</td><td class="n">0.0 % · 4.99 m</td><td class="n">55.8 % · 5.98 m · 33.7 s</td><td class="n">69.2 %</td><td class="n">48.0 ± 10.0 %<br>(시드 3개)</td></tr>
+    <tr><td>35°</td><td class="n">0.0 % · 4.99 m</td><td class="n">55.8 % · 5.98 m · 33.7 s<br>(시드 3개 평균 59.6 ± 26.7 %)</td><td class="n">69.2 %</td><td class="n">48.0 ± 10.0 %<br>(시드 3개)</td></tr>
     <tr><td>40°</td><td class="n">0 % · 1.73 m · 전복 81 %</td><td class="n">0 % · 1.77 m · 전복 22 %</td><td class="n">0 % · 전복 100 %</td><td class="n">0 % · 전복 100 %</td></tr>
     <tr><td>45°</td><td class="n">0 % · 1.45 m · 전복 100 %</td><td class="n">0 % · 1.46 m · 전복 100 %</td><td class="n">—</td><td class="n">—</td></tr>
   </table></div>
@@ -378,7 +379,9 @@
     <tr><td>고정 서스펜션</td><td class="n">0.0 %</td><td class="n">4.99 m</td><td class="n">—</td><td class="n">47 %</td><td class="n">0.9°</td></tr>
     <tr><td>고정 heave 0.9</td><td class="n">29.3 %</td><td class="n">5.52 m</td><td class="n">31.2 s</td><td class="n">44 %</td><td class="n">1.0°</td></tr>
     <tr><td>고정 heave 1.0 (격자 탐색 최적)</td><td class="n">69.2 %</td><td class="n">6.08 m</td><td class="n">31.3 s</td><td class="n">40 %</td><td class="n">1.0°</td></tr>
-    <tr><td>PPO joint (45° 커리큘럼)</td><td class="n">55.8 %</td><td class="n">5.98 m</td><td class="n">33.7 s</td><td class="n">36 %</td><td class="n">7.6°</td></tr>
+    <tr><td>PPO joint (45° 커리큘럼, 시드 1)</td><td class="n">55.8 %</td><td class="n">5.98 m</td><td class="n">33.7 s</td><td class="n">36 %</td><td class="n">7.6°</td></tr>
+    <tr><td>PPO joint (시드 2)</td><td class="n">35.0 %</td><td class="n">5.58 m</td><td class="n">32.8 s</td><td class="n">39 %</td><td class="n">2.6°</td></tr>
+    <tr class="hl"><td>PPO joint (시드 3)</td><td class="n">88.0 %</td><td class="n">6.35 m</td><td class="n">29.1 s</td><td class="n">36 %</td><td class="n">4.1°</td></tr>
     <tr><td>PPO res. 0.9 + 벌점</td><td class="n">0.7 %</td><td class="n">4.49 m</td><td class="n">39.4 s</td><td class="n">35 %</td><td class="n">2.2°</td></tr>
     <tr><td>PPO res. 0.9</td><td class="n">36.9 %</td><td class="n">5.77 m</td><td class="n">37.4 s</td><td class="n">36 %</td><td class="n">2.0°</td></tr>
     <tr class="hl"><td>PPO res. 1.0 (시드 1)</td><td class="n">59.5 %</td><td class="n">5.93 m</td><td class="n">31.4 s</td><td class="n">40 %</td><td class="n">1.5°</td></tr>
@@ -403,7 +406,37 @@
     <li><strong>residual 정책은 차체를 오히려 낮춘다.</strong> 같은 최대 높이(heave 1.0)에서 출발했는데 차체 접촉이 9 %로 고정 자세(3 %)의 3배입니다. 정책이 heave를 빼서 차체를 낮추는 순간이 있고, 그때 배가 닿는 것으로 보입니다. 성공률 차이를 설명하는 가장 유력한 원인입니다.</li>
     <li><strong>바퀴 속도 조절은 관절 직접 제어 정책이 더 잘 배웠다.</strong> PPO joint의 미끄러짐이 0.30으로 가장 낮습니다.</li>
   </ul>
-  <p>다음 실험은 heave를 1.0에 고정하고 정책은 pitch·roll·twist와 바퀴만 조절하게 하는 것입니다. “높이는 이미 정답이니 건드리지 말고 나머지로 더 잘해 보라”를 시험하는 것으로, 이게 69.2 %를 넘으면 PPO가 최적 자세 위에 추가로 기여한다는 뜻이고, 못 넘으면 35°에서는 높이가 전부라는 결론이 됩니다.</p>
+  <p>그래서 heave를 1.0에 묶고 정책은 pitch·roll·twist와 바퀴만 조절하게 하는 실험을 했습니다. “높이를 깎아서 졌다”가 맞다면 69.2 % 근처까지 올라와야 합니다. 결과는 <strong>14.4 %</strong>(시드 1개)로 오히려 크게 떨어졌습니다. 가설은 틀렸습니다. 높이를 최대로 묶어 두어도, 정책이 덧붙인 앞뒤 기울기(pitch) 같은 자세 변화가 정상에서 지상고를 깎아 손해가 된 것으로 보입니다. 자세 히트맵(Fig. 2)에서 pitch를 섞으면 성공률이 떨어진 것과 같은 방향입니다. 그런데 바로 다음 장에서 보듯, 같은 pitch를 “언제 쓰느냐”를 배운 정책은 결과가 정반대였습니다.</p>
+
+  <h2 id="s11b"><span class="no">11+</span>PPO가 최적 고정 자세를 넘은 경우 — 단계별 자세 전략</h2>
+  <p>관절 직접 제어 PPO를 시드 3개로 학습했더니 35° 성공률이 <strong>35.0 / 55.8 / 88.0 %</strong>로 크게 갈렸습니다. 세 번째 시드는 최적 고정 자세(69.2 %)를 19 %p 넘었습니다. 무엇이 다른지 같은 출발 조건에서 영상으로 비교했습니다.</p>
+  <figure>
+    <video src="assets/ppo-s35-seed1-vs-3.mp4" poster="assets/ppo-s35-seed1-vs-3.jpg" controls muted loop playsinline preload="metadata"></video>
+    <figcaption><b>Video 6</b> 35°, 같은 출발 조건(시드 123, Video 3·4와 같음). 왼쪽 시드 1 정책, 오른쪽 시드 3 정책. 24초 시점에 시드 1은 아직 경사 중간(3.91 m, 기울기 33°)인데, 시드 3은 이미 네 관절을 최대로 편 채 정상에 걸쳐(5.28 m, 기울기 14°) 있고 28.8초에 정상을 넘습니다. 시드 1은 이 출발 조건에서 시간이 다 됩니다.</figcaption>
+  </figure>
+  <figure>
+    <img src="assets/ppo-seed3-phases.jpg" alt="시드 3 정책의 10, 24, 27초 장면">
+    <figcaption><b>Photo 4</b> 시드 3 정책의 세 단계(10초 / 24초 / 27초). 영상 위 숫자는 원래 관절 부호(FL FR RL RR = +, −, +, −가 같은 방향)입니다.</figcaption>
+  </figure>
+  <div class="table-wrap"><table>
+    <tr><th>구간 (시드 3, 35°)</th><th>시점</th><th>서스펜션 (부호 맞춤) 앞 / 뒤</th><th>차체 기울기</th><th>하는 일</th></tr>
+    <tr><td>① 경사 오르기</td><td class="n">10~18 s</td><td class="n">−15~−17° / +15~+18°</td><td class="n">약 30°</td><td>앞을 낮추고 뒤를 올려 차체를 경사(35°)보다 수평 쪽으로 세움</td></tr>
+    <tr><td>② 정상 넘기</td><td class="n">24 s</td><td class="n">+18~+20° / +18~+19°</td><td class="n">14°</td><td>네 관절을 모두 최대로 펴서 지상고 확보</td></tr>
+    <tr><td>③ 정상 위</td><td class="n">27 s</td><td class="n">+19°, +12° / −2°, −10°</td><td class="n">4°</td><td>뒤를 풀면서 다시 수평 쪽으로</td></tr>
+  </table></div>
+  <p>고정 자세는 둘 중 하나만 할 수 있습니다. 앞을 숙인 pitch 자세는 경사 위에서 차체를 세워 주지만 정상에서 앞쪽 지상고를 깎아 걸리고, 최대 높이(heave 1.0)는 정상은 잘 넘지만 경사 위에서 차체가 35°로 다 기울어집니다. 시드 3 정책은 <strong>경사에서는 pitch, 정상에서는 heave</strong>로 전환해 두 장점을 모두 가져갔습니다. 높이를 묶은 실험(14.4 %)이 실패한 것도 같은 이유로 설명됩니다. 정상에서 높이를 끝까지 쓰면서 pitch는 경사에서만 써야 하는데, 그 “전환”을 할 수 없는 구조였습니다.</p>
+  <div class="table-wrap"><table>
+    <tr><th>35°</th><th>성공</th><th>거리</th><th>시간</th><th>차체 접촉</th><th>미끄러짐</th><th>평지 기울기</th></tr>
+    <tr><td>PPO joint 시드 1</td><td class="n">55.8 %</td><td class="n">5.98 m</td><td class="n">33.7 s</td><td class="n">6 %</td><td class="n">0.30</td><td class="n">7.6°</td></tr>
+    <tr><td>PPO joint 시드 2</td><td class="n">35.0 %</td><td class="n">5.58 m</td><td class="n">32.8 s</td><td class="n">12 %</td><td class="n">0.44</td><td class="n">2.6°</td></tr>
+    <tr class="hl"><td>PPO joint 시드 3</td><td class="n">88.0 %</td><td class="n">6.35 m</td><td class="n">29.1 s</td><td class="n">4 %</td><td class="n">0.32</td><td class="n">4.1°</td></tr>
+    <tr><td>고정 heave 1.0</td><td class="n">69.2 %</td><td class="n">6.08 m</td><td class="n">31.3 s</td><td class="n">3 %</td><td class="n">0.41</td><td class="n">1.0°</td></tr>
+  </table></div>
+  <ul>
+    <li><strong>시드 3은 미끄러짐이 적고(0.32 vs 0.41) 빠릅니다(29.1 vs 31.3 s).</strong> 경사에서 차체를 세운 자세가 바퀴 하중을 더 유리하게 나누는 것으로 보입니다.</li>
+    <li><strong>시드 2는 차체 접촉이 12 %로 가장 많습니다.</strong> 정상에서 높이를 충분히 쓰지 못한 정책입니다.</li>
+    <li><strong>이 전략은 시드 3개 중 하나만 찾았습니다.</strong> 그래서 “PPO가 최적 고정 자세를 이긴다”가 아니라, “PPO는 고정 자세로는 불가능한 단계별 전략을 <em>발견할 수 있고</em>, 발견하면 최적 고정 자세를 넘는다. 다만 발견이 시드에 따라 불안정하다(평균 59.6 ± 26.7 %)”가 정확한 결론입니다. 시드를 5개 이상으로 늘려 발견 빈도를 확인하고 있습니다.</li>
+  </ul>
 
   <h2 id="s12"><span class="no">12</span>평지에서 기울어진 차체</h2>
   <figure>
@@ -429,17 +462,15 @@
   <ul>
     <li>능동 서스펜션 PPO는 고정 서스펜션의 30° 벽(배 걸림)을 스스로 차체를 들어 넘었습니다(0.8 % → 100 %).</li>
     <li>보상 설계가 학습을 막을 수 있습니다. 안전장치로 넣은 sus_limit 벌점이 최적 자세를 금지했고, 빼자 0.7 % → 36.9 %가 됐습니다.</li>
-    <li>35°에서 PPO는 각도별 튜닝 없이 최적 고정 자세의 약 69 %(시드 3개 평균 48.0 / 69.2)까지 가지만, 시드에 따른 편차가 큽니다(41.0~59.5 %).</li>
-    <li>모드 + residual 구조는 평지 자세를 확실히 고칩니다(7.6° → 1.3~1.5°, 세 시드 동일). 35° 성공률에서 관절 직접 제어보다 나은지는 시드를 늘려 확인 중입니다.</li>
+    <li>35°에서 관절 직접 제어 PPO는 <strong>경사에서 pitch → 정상에서 heave로 바꾸는 단계별 전략</strong>을 찾으면 최적 고정 자세를 넘습니다(88.0 % vs 69.2 %). 다만 시드 3개 중 하나만 찾았고, 평균은 59.6 ± 26.7 %입니다.</li>
+    <li>모드 + residual 구조는 평지 자세를 확실히 고치지만(7.6° → 1.3~1.5°, 세 시드 동일), 35° 성공률은 48.0 ± 10.0 %로 관절 직접 제어보다 낫지 않았습니다. 높이를 묶은 residual은 14.4 %로 더 나빴습니다.</li>
   </ul>
 
   <h2><span class="no">14</span>검증 중인 것과 남은 것</h2>
   <ul>
-    <li><strong>시드</strong> — PPO res. 1.0은 시드 3개(35°에서 48.0 ± 10.0 %), 나머지 정책은 시드 1개입니다. 관절 직접 제어 2·3번째 시드를 학습 중이고 최종적으로 3~5개 시드로 평균과 편차를 낼 계획입니다.</li>
+    <li><strong>시드</strong> — PPO joint와 res. 1.0은 시드 3개, 높이 고정 residual은 1개입니다. 단계별 전략이 얼마나 자주 발견되는지 보려고 PPO joint 시드 4·5를 학습 중입니다. 발견을 안정적으로 만드는 방법(예: 경사 구간별 보상, 커리큘럼 조정)도 다음 과제입니다.</li>
     <li><strong>실제 제원 보정</strong> — 바퀴 지름, 휠베이스, 지상고 범위를 NASA 발표 제원에 맞춘 모델로 다시 학습해, 실제 VIPER 범위에서는 몇 도까지 오를 수 있는지 확인할 계획입니다.</li>
     <li><strong>정상 통과 궤적</strong> — 거리별 서스펜션 각도·차체 각도·바퀴 하중을 기록하는 스크립트가 평가 스크립트와 다른 성공률을 냈습니다(같은 35° PPO에서 6.2 % vs 55.8 %). 같은 조건(로버 256대, 같은 시드)으로 평가 스크립트를 다시 돌리면 59.6 %가 나와, 로버 수가 아니라 궤적 스크립트의 성공 판정 문제로 확인됐습니다. 판정을 고친 뒤 “PPO가 정상 몇 m 앞에서 차체를 들기 시작하는가”를 그래프로 추가할 예정입니다.</li>
-    <li><strong>높이 고정 residual</strong> — heave를 1.0에 묶고 나머지 모드와 바퀴만 학습하는 실험(11장 마지막).</li>
-    <li><strong>빈 칸</strong> — 최적 고정 자세와 residual 정책의 20°, 25°, 45° 평가.</li>
     <li><strong>고정 자세 하나로는 안 되는 과제</strong> — 정상 뒤에 평지 구간을 붙여 “오르고, 넘고, 다시 수평”까지 평가하고, 옆 경사처럼 높이를 최대로 드는 게 위험한(전복) 상황을 추가할 계획입니다.</li>
     <li><strong>교차 검증</strong> — Isaac Lab 밖의 지형 환경(OmniLRS)에서도 같은 경향이 나오는지.</li>
     <li>모든 결과는 시뮬레이션이며, 실물 로버나 실제 토양으로 시험한 것이 아닙니다. 서스펜션 구동기 속도 제한(1 rad/s)은 데이터시트 없이 정한 가정값입니다.</li>
@@ -449,7 +480,7 @@
   <p>제일 크게 남은 건 <strong>“강화학습이 이겼다”보다 “왜 이기고 왜 졌는지”가 더 중요하다</strong>는 감각입니다. PPO가 고정 서스펜션을 이긴 이유는 배 걸림이었고, 최적 고정 자세에 진 이유는 내가 넣은 벌점이었습니다. 40° 이상은 아무도 못 오르는 게 오히려 시뮬레이터가 물리적으로 맞게 동작한다는 증거였습니다. 숫자 하나가 이상할 때마다 영상을 다시 보고, 자세를 하나씩 고정해서 재 보고, 실패한 위치와 바퀴 들림 같은 보조 지표로 원인을 좁히고, 가설을 세워 한 가지만 바꿔 다시 학습했습니다. 결과가 기대와 다를 때가 가장 많이 배우는 때였습니다.</p>
 
   <hr class="hr">
-  <p class="foot">수치는 모두 Isaac Sim 5.0 + Isaac Lab 시뮬레이터 내부 계측값이며, PPO res. 1.0은 시드 3개, 나머지 정책은 시드 1개 기준입니다(Fig. 1·3은 시드 1). Fig. 6·7 왼쪽은 개략 2-D 스케치 모델입니다. 실물 로버·토양 시험 결과가 아닙니다. 마지막 업데이트 2026.11.12 (시드 3 반영).</p>
+  <p class="foot">수치는 모두 Isaac Sim 5.0 + Isaac Lab 시뮬레이터 내부 계측값이며, PPO joint와 res. 1.0은 시드 3개, 나머지 학습 정책은 시드 1개 기준입니다(Fig. 1·3은 시드 1). Fig. 6·7 왼쪽은 개략 2-D 스케치 모델입니다. 실물 로버·토양 시험 결과가 아닙니다. 마지막 업데이트 2026.11.13 (PPO joint 시드 3, 높이 고정 실험 반영).</p>
 </div>
 </body>
 </html>
