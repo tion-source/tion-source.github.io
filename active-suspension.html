@@ -249,12 +249,21 @@
     <tr><th>경사</th><th>고정 서스펜션<br>성공 · 거리 · 시간</th><th>PPO joint (45° 학습)<br>성공 · 거리 · 시간</th><th>고정 heave 1.0</th><th>PPO res. 1.0</th></tr>
     <tr><td>20°</td><td class="n">100 % · 6.50 m · 20.9 s</td><td class="n">100 % · 6.50 m · 20.8 s</td><td class="n">—</td><td class="n">—</td></tr>
     <tr><td>25°</td><td class="n">93.8 % · 6.45 m · 29.2 s</td><td class="n">100 % · 6.50 m · 20.4 s</td><td class="n">—</td><td class="n">—</td></tr>
+    <tr><td>27.5°</td><td class="n">38.6 %</td><td class="n">—</td><td class="n">—</td><td class="n">—</td></tr>
     <tr class="hl"><td>30°</td><td class="n">0.8 % · 5.19 m · —</td><td class="n">100 % · 6.50 m · 20.9 s</td><td class="n">100 %</td><td class="n">100 %</td></tr>
+    <tr><td>32.5°</td><td class="n">—</td><td class="n">시드 1~4: 100 / 99.9 / 100 / 100 %</td><td class="n">100 %</td><td class="n">—</td></tr>
     <tr><td>35°</td><td class="n">0.0 % · 4.99 m</td><td class="n">55.8 % · 5.98 m · 33.7 s<br>(시드 4개 평균 66.2 ± 25.5 %)</td><td class="n">69.2 %</td><td class="n">48.0 ± 10.0 %<br>(시드 3개)</td></tr>
+    <tr><td>37.5°</td><td class="n">—</td><td class="n">시드 1~4: 모두 0 %</td><td class="n">0 %</td><td class="n">—</td></tr>
     <tr><td>40°</td><td class="n">0 % · 1.73 m · 전복 81 %</td><td class="n">0 % · 1.77 m · 전복 22 %</td><td class="n">0 % · 전복 100 %</td><td class="n">0 % · 전복 100 %</td></tr>
     <tr><td>45°</td><td class="n">0 % · 1.45 m · 전복 100 %</td><td class="n">0 % · 1.46 m · 전복 100 %</td><td class="n">—</td><td class="n">—</td></tr>
   </table></div>
   <p>거리는 평균 도달 거리, 시간은 성공한 에피소드의 도달 시간 중앙값입니다. 성공률이 무너지는 지점이 두 군데 보입니다. <strong>25°→30°</strong>(고정 서스펜션)와 <strong>35°→40°</strong>(모든 제어기). 둘은 원인이 다르고, 이 노트의 나머지는 그 “왜”를 하나씩 확인한 과정입니다.</p>
+  <p>벽의 위치를 좁히려고 27.5°, 32.5°, 37.5°를 추가로 평가했습니다.</p>
+  <ul>
+    <li><strong>배 걸림 벽은 25~30° 사이에서 급하게 옵니다.</strong> 고정 서스펜션은 25° 93.8 % → 27.5° 38.6 % → 30° 0.8 %입니다. 능동 서스펜션은 32.5°까지 모두 100 %입니다.</li>
+    <li><strong>마찰 벽은 35~37.5° 사이입니다.</strong> 32.5°에서 모두 100 %, 37.5°에서 모두 0 %입니다. 평가 동마찰 0.70의 한계각 arctan 0.70 = 35.0°와 정확히 겹칩니다. 35°는 한계 바로 위라 바퀴가 한 번 미끄러지면 회복이 어렵고, 그래서 제어기 차이가 드러나는 유일한 각도입니다.</li>
+    <li>정리하면 능동 서스펜션은 오를 수 있는 경사를 <strong>약 27° → 35°</strong>로 넓히고, 그 위는 마찰이 막습니다. 시드 간 차이와 단계별 전략의 효과는 모두 35° 한 곳에서만 나타납니다.</li>
+  </ul>
 
   <h2><span class="no">08</span>왜 1 — 고정 서스펜션은 왜 30°에서 멈추나: 배 걸림</h2>
   <h3>영상으로 보면</h3>
@@ -434,10 +443,20 @@
     <tr class="hl"><td>PPO joint 시드 4</td><td class="n">86.2 %</td><td class="n">—</td><td class="n">30.8 s</td><td class="n">5 %</td><td class="n">0.35</td><td class="n">—</td></tr>
     <tr><td>고정 heave 1.0</td><td class="n">69.2 %</td><td class="n">6.08 m</td><td class="n">31.3 s</td><td class="n">3 %</td><td class="n">0.41</td><td class="n">1.0°</td></tr>
   </table></div>
+  <figure>
+    <video src="assets/ppo-s35-seed3-vs-4.mp4" poster="assets/ppo-s35-seed3-vs-4.jpg" controls muted loop playsinline preload="metadata"></video>
+    <figcaption><b>Video 7</b> 35°, 같은 출발 조건(시드 123). 왼쪽 시드 3, 오른쪽 시드 4 정책. 따로 학습한 두 정책이 같은 3단계 전략을 씁니다. 시드 4는 경사 자세로 늦게 들어가서(4.5초에 앞 관절 −2.6° vs −19°) 약 2초 늦게 도착합니다(30.9 vs 28.8 s).</figcaption>
+  </figure>
+  <div class="table-wrap"><table>
+    <tr><th>원래 관절 값 (FL FR RL RR)</th><th>시드 3</th><th>시드 4</th></tr>
+    <tr><td>① 경사 중간 (13.5 s)</td><td class="n">−18.8 +15.6 +9.8 −17.9</td><td class="n">−17.4 +11.6 +18.0 −18.5</td></tr>
+    <tr><td>② 정상 (22.5 s / 25.5 s)</td><td class="n">+18.0 −15.1 +17.3 −18.8</td><td class="n">+17.8 −18.8 +18.8 −18.2</td></tr>
+    <tr><td>③ 정상 위 (28.5 s / 30.9 s)</td><td class="n">+18.6 −16.8 −2.2 +4.6</td><td class="n">+19.0 −6.0 +12.2 −0.1</td></tr>
+  </table></div>
   <ul>
     <li><strong>시드 3은 미끄러짐이 적고(0.32 vs 0.41) 빠릅니다(29.1 vs 31.3 s).</strong> 경사에서 차체를 세운 자세가 바퀴 하중을 더 유리하게 나누는 것으로 보입니다.</li>
     <li><strong>시드 2는 차체 접촉이 12 %로 가장 많습니다.</strong> 정상에서 높이를 충분히 쓰지 못한 정책입니다.</li>
-    <li><strong>시드 4개 중 2개가 이 수준(86~88 %)에 도달했습니다.</strong> 결과가 “전략을 찾은 정책(86~88 %)”과 “못 찾은 정책(35~56 %)”으로 갈립니다. 그래서 정확한 결론은 “PPO는 고정 자세로는 불가능한 단계별 전략을 <em>약 절반의 시드에서</em> 찾아내고, 찾으면 최적 고정 자세를 크게 넘는다(평균 66.2 ± 25.5 %)”입니다. 시드 3 정책은 25°·30°에서 100 %, 40°에서 0 %로, 마찰 한계를 넘는 각도는 이 전략으로도 넘지 못합니다.</li>
+    <li><strong>시드 4개 중 2개가 이 수준(86~88 %)에 도달했고, 두 정책은 같은 3단계 전략을 독립적으로 찾았습니다(Video 7).</strong> 결과가 “전략을 찾은 정책(86~88 %)”과 “못 찾은 정책(35~56 %)”으로 갈립니다. 그래서 정확한 결론은 “PPO는 고정 자세로는 불가능한 단계별 전략을 <em>약 절반의 시드에서</em> 찾아내고, 찾으면 최적 고정 자세를 크게 넘는다(평균 66.2 ± 25.5 %)”입니다. 시드 3 정책은 25°·30°에서 100 %, 40°에서 0 %로, 마찰 한계를 넘는 각도는 이 전략으로도 넘지 못합니다.</li>
   </ul>
 
   <h2 id="s12"><span class="no">12</span>평지에서 기울어진 차체</h2>
