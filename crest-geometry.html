@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>크레스트가 얼마나 둥글면 능동 서스펜션이 필요 없어질까 — TION LAB</title>
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #F5F2EC; --card: #EDEAE2; --border: #D6D2C8; --text: #1A1A18; --sub: #5C5C52;
+    --muted: #8A8A7E; --violet: #8E86A8; --accent-bg: #EEEAF3; --accent-lt: #C9C2D8;
+    --mono: 'JetBrains Mono', monospace; --sans: 'Inter', sans-serif;
+  }
+  html { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.75; }
+  .page { max-width: 760px; margin: 0 auto; padding: 2.5rem 2rem 5rem; }
+  .back { display: inline-block; font-family: var(--mono); font-size: 12px; color: var(--muted); text-decoration: none; margin-bottom: 2rem; }
+  .back:hover { color: var(--text); }
+  .kicker { font-family: var(--mono); font-size: 11px; color: var(--violet); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  h1 { font-size: 26px; font-weight: 700; line-height: 1.35; margin-bottom: 0.6rem; }
+  .meta { font-family: var(--mono); font-size: 11.5px; color: var(--muted); margin-bottom: 2rem; }
+  h2 { font-size: 18px; font-weight: 600; margin: 2.5rem 0 0.75rem; }
+  h2 .no { font-family: var(--mono); font-size: 13px; color: var(--violet); margin-right: 8px; }
+  h3 { font-size: 15px; font-weight: 600; margin: 1.5rem 0 0.5rem; }
+  p, li { font-size: 14.5px; color: var(--sub); }
+  p { margin-bottom: 0.9rem; }
+  a { color: var(--text); }
+  ul, ol { padding-left: 1.2rem; margin-bottom: 0.9rem; }
+  li { margin-bottom: 0.35rem; }
+  strong { color: var(--text); font-weight: 600; }
+  code { font-family: var(--mono); font-size: 12.5px; background: var(--card); padding: 1px 5px; border-radius: 4px; color: var(--text); }
+  .tldr { background: var(--accent-bg); border: 1px solid var(--accent-lt); border-radius: 10px; padding: 1.1rem 1.3rem; margin-bottom: 1.25rem; }
+  .tldr p { color: var(--text); margin-bottom: 0.4rem; }
+  .tldr ul { margin-bottom: 0; }
+  .aside { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--violet); border-radius: 6px; padding: 0.8rem 1rem; margin: 1rem 0; font-size: 14px; color: var(--sub); }
+  .aside p:last-child, .aside ul:last-child { margin-bottom: 0; }
+  .table-wrap { overflow-x: auto; margin: 0.75rem 0 1.25rem; }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+  th, td { border: 1px solid var(--border); padding: 7px 11px; text-align: left; }
+  th { background: var(--card); font-weight: 600; color: var(--text); }
+  td { color: var(--sub); background: #FAF8F4; }
+  td.n { font-family: var(--mono); font-size: 12.5px; white-space: nowrap; }
+  tr.hl td { background: var(--accent-bg); color: var(--text); }
+  figure { margin: 1.25rem 0 1.5rem; }
+  figure img, figure video { width: 100%; display: block; border: 1px solid var(--border); border-radius: 8px; background: #fff; }
+  figure.fig img { padding: 10px; }
+  figcaption { font-size: 12.5px; color: var(--muted); margin-top: 0.5rem; line-height: 1.6; }
+  figcaption b { font-family: var(--mono); font-weight: 500; color: var(--violet); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .terms { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; font-size: 14px; color: var(--sub); }
+  .terms dt { font-family: var(--mono); font-size: 12.5px; color: var(--text); padding-top: 2px; }
+  .hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0 1.5rem; }
+  .foot { font-size: 12.5px; color: var(--muted); }
+  @media (max-width: 600px) { .page { padding: 2rem 1.1rem 4rem; } h1 { font-size: 22px; } .two { grid-template-columns: 1fr; } .terms { grid-template-columns: 1fr; } }
+  .flow { display: flex; flex-wrap: wrap; align-items: stretch; gap: 6px; margin: 0.75rem 0 1rem; }
+  .flow .box { background: #FAF8F4; border: 1px solid var(--border); border-radius: 8px; padding: 7px 10px; font-size: 12.5px; color: var(--sub); display: flex; flex-direction: column; justify-content: center; min-width: 96px; }
+  .flow .box b { color: var(--text); font-weight: 600; font-size: 13px; }
+  .flow .arrow { align-self: center; color: var(--violet); font-family: var(--mono); }
+</style>
+</head>
+<body>
+<div class="page">
+  <a class="back" href="lproject.html">← L-Project</a>
+
+  <div class="kicker">Project Note · 계획 · 기술 분석</div>
+  <h1>크레스트가 얼마나 둥글면 능동 서스펜션이 필요 없어질까</h1>
+  <div class="meta">NASA VIPER급 4륜 로버 · 크레스트 형상 × 경사 등판 지도 · 2026.11 · 박시현(Tion)</div>
+
+  <div class="tldr">
+    <p><strong>연구 질문 (한 줄)</strong> — 급경사 등판에서 배 걸림을 정하는 것은 경사각만이 아니라 <strong>크레스트(경사→평지 꺾임부)의 둥근 정도</strong>이며, 능동 서스펜션은 <strong>어떤 경사 × 크레스트 반경 조합에서만</strong> 필요한가?</p>
+    <ul>
+      <li>출발점: <a href="active-suspension.html">이전 노트</a>에서 고정 서스펜션은 30° 경사의 <strong>날카로운 정상 모서리</strong>에 차체 하부가 걸려 멈췄습니다(성공률 0.8 %). 그 실험의 크레스트는 반경 0인 모서리 하나뿐이었습니다.</li>
+      <li>기하 예측(준정적, 아래 03): 크레스트 반경 R이 0 → 0.5 → 1 m로 커지면 배 걸림 경사가 <strong>약 27.5° → 30° → 35°</strong>로 밀려나고, R = 2 m(휠베이스의 1.3배)에서는 35°까지 <strong>차체가 크레스트에 닿지 않습니다</strong>.</li>
+      <li>그래서 기대하는 결과는 "능동 서스펜션이 필요한 영역"의 지도입니다. 경로 계획이 크레스트 형상을 보고 "고정 자세로 충분 / 능동 자세 전환 필요 / 마찰 한계로 불가"를 나눌 수 있게 하는 것이 목표입니다.</li>
+      <li>상태: 기하 예측까지 완료, 시뮬레이션 실험은 진행 예정입니다. 아래 수치 중 시뮬레이션 실측은 이전 노트의 R = 0 결과뿐입니다.</li>
+    </ul>
+  </div>
+
+  <h2><span class="no">01</span>왜 이 질문인가</h2>
+  <p>이전 실험에서 30° 실패의 원인은 견인력이 아니라 <strong>기하</strong>였습니다. 고정 서스펜션의 차체-지면 접촉 비율은 31 %, 학습 정책은 0 %였고, 35° 이상에서 실패한 이유(마찰 한계 arctan 0.70 = 35.0°)와는 성격이 달랐습니다.</p>
+  <p>원인이 기하라면 바꿔 봐야 할 변수도 기하입니다. 그런데 지금까지의 실험은 4 m 직선 경사로와 날카로운 정상 모서리 <strong>한 가지 형상</strong>만 썼습니다. 실제 지형의 볼록 꺾임부는 날카로울 수도, 둥글 수도 있습니다. 크레스트가 충분히 둥글면 고정 서스펜션도 배가 걸리지 않을 수 있고, 그렇다면 능동 서스펜션의 이득은 특정 조건에서만 존재합니다.</p>
+  <div class="aside"><p>이 노트의 기여는 "능동 서스펜션을 강화학습으로 제어했다"가 아닙니다. 그건 이미 여러 연구가 했습니다. 기여는 <strong>"배 걸림을 정하는 기하 변수(경사 θ, 크레스트 반경 R, 지상고 h, 휠베이스 L)를 분리하고, 능동 자세 전환이 필요한 영역을 지도로 만드는 것"</strong>입니다.</p></div>
+
+  <h2><span class="no">02</span>용어</h2>
+  <dl class="terms">
+    <dt>크레스트 (crest)</dt><dd>경사면이 위쪽 평지와 만나는 볼록한 꺾임부. 크레이터 테두리를 넘을 때 반드시 지나는 곳</dd>
+    <dt>크레스트 반경 R</dt><dd>꺾임부를 둥글게 이은 원호의 반경. R = 0이면 날카로운 모서리</dd>
+    <dt>배 걸림 (high-centering)</dt><dd>앞뒤 바퀴가 크레스트 양쪽에 걸쳐 있을 때 차체 하부가 크레스트에 얹혀 바퀴 하중이 사라지는 현상</dd>
+    <dt>R/L</dt><dd>크레스트 반경을 휠베이스(1.49 m)로 나눈 무차원 값. 로버 크기가 달라도 비교할 수 있게 함</dd>
+  </dl>
+
+  <h2><span class="no">03</span>기하 예측 — 둥글수록 늦게 걸린다</h2>
+  <p>로버를 바퀴 두 개(반경 0.215 m)와 그 사이 강체 차체로 단순화하고, 차체 하부 돌출부(평지 지상고 0.135 m)가 휠베이스 중앙에 있다고 가정해 경사로를 따라 준정적으로 이동시켰습니다. 각 위치에서 차체 하부가 지면 아래로 들어가는 깊이(겹침)의 최댓값을 계산했습니다.</p>
+  <figure class="fig">
+    <img src="assets/crest-geom-prediction.png" alt="크레스트 반경별 배 걸림 겹침 예측">
+    <figcaption><b>Fig. C1</b> 왼쪽: 크레스트 반경 R별, 경사에 따른 차체 하부와 크레스트의 최대 겹침(고정 기본 자세, 준정적 2-D). 회색 띠는 R = 0에서 시뮬레이션이 실제로 무너진 경사(27.5°, 성공률 38.6 %)의 겹침 크기(약 40~50 mm). 오른쪽: 30° 경사로의 날카로운 크레스트와 R = 2 m 크레스트 단면.</figcaption>
+  </figure>
+  <div class="table-wrap"><table>
+    <tr><th>크레스트 반경 R (R/L)</th><th>처음 닿는 경사</th><th>겹침 40~50 mm에 이르는 경사 (예상 벽)</th><th>35°에서의 겹침</th></tr>
+    <tr><td>0 m (0)</td><td class="n">약 21°</td><td class="n">약 27.5° (시뮬레이션 기준)</td><td class="n">100 mm</td></tr>
+    <tr><td>0.5 m (0.34)</td><td class="n">약 22°</td><td class="n">약 30°</td><td class="n">75 mm</td></tr>
+    <tr><td>1 m (0.67)</td><td class="n">약 24°</td><td class="n">약 35°</td><td class="n">49 mm</td></tr>
+    <tr class="hl"><td>2 m (1.34)</td><td class="n">35°까지 닿지 않음</td><td class="n">없음</td><td class="n">−2 mm</td></tr>
+  </table></div>
+  <ul>
+    <li><strong>읽는 법:</strong> 차체가 크레스트에 살짝 닿는 것만으로는 멈추지 않습니다(R = 0에서 처음 닿는 21°를 넘어 25°에서도 93.8 % 성공). 시뮬레이션에서 성공률이 무너진 27.5°의 겹침이 약 40~50 mm였으므로, 이 값을 "벽"의 기준으로 썼습니다.</li>
+    <li><strong>예측:</strong> R = 1 m 정도면 배 걸림 벽이 마찰 한계(35°)까지 밀려나 <strong>고정 서스펜션으로도 마찰 한계까지 오를 수 있고</strong>, R = 2 m이면 배 걸림 자체가 생기지 않습니다.</li>
+    <li><strong>한계:</strong> 2-D 준정적 모델이고, 서스펜션 순응·바퀴 미끄러짐·관성은 없습니다. 돌출부의 앞뒤 위치도 가정값입니다. 그래서 이 표는 시뮬레이션으로 확인할 <strong>가설</strong>이지 결과가 아닙니다.</li>
+  </ul>
+
+  <h2><span class="no">04</span>실험 설계</h2>
+  <div class="flow">
+    <div class="box"><b>지형</b>크레스트 반경 4단계<br>R/L = 0, 0.34, 0.67, 1.34</div><div class="arrow">×</div>
+    <div class="box"><b>경사</b>25 / 27.5 / 30 / 32.5 / 35°</div><div class="arrow">×</div>
+    <div class="box"><b>제어기</b>고정 기본 · 최적 고정(heave 1.0) · PPO</div><div class="arrow">→</div>
+    <div class="box"><b>지도</b>θ × R 평면에<br>세 영역 표시</div>
+  </div>
+  <div class="table-wrap"><table>
+    <tr><th>항목</th><th>설정</th><th>이유</th></tr>
+    <tr><td>크레스트 반경</td><td class="n">0, 0.5, 1, 2 m</td><td>기하 예측의 전환점(약 1 m)을 양쪽에서 감쌈. R/L로 함께 보고</td></tr>
+    <tr><td>경사</td><td class="n">25~35°, 2.5° 간격</td><td>배 걸림 벽(27.5°)부터 마찰 한계(35°)까지. 37.5° 이상은 마찰로 모두 0 %라 제외</td></tr>
+    <tr><td>제어기 ①</td><td>고정 기본 자세</td><td>학습이 없어 결과가 정책에 좌우되지 않음 → <strong>지도의 주 근거</strong></td></tr>
+    <tr><td>제어기 ②</td><td>최적 고정 자세(heave 1.0)</td><td>"그냥 높이만 올리면 되는가"에 대한 답</td></tr>
+    <tr><td>제어기 ③</td><td>PPO, 크레스트 반경을 섞어 재학습</td><td>날카로운 크레스트로만 학습한 정책을 둥근 크레스트에 쓰면 일반화 문제가 섞이므로, R을 무작위로 섞어 다시 학습</td></tr>
+    <tr><td>평가</td><td class="n">조건당 832 에피소드</td><td>성공률 50 % 부근 95 % 신뢰구간 약 ±3.4 %p</td></tr>
+    <tr><td>지표</td><td>성공률, 차체-지면 접촉 비율, 크레스트에서 네 바퀴 하중 합, 통과 시간</td><td>성공률이 같아도 실패 원인(배 걸림 vs 미끄러짐)을 구분</td></tr>
+  </table></div>
+  <p>예상 비용: 지형 생성 코드 수정 반나절, 고정 자세 평가 40회(약 3.5시간), PPO 재학습 시드 3개(약 7시간)와 평가 20회(약 2시간). 노트북 GPU(RTX 4060) 기준 이틀 밤이면 됩니다.</p>
+
+  <h2><span class="no">05</span>위험 요소와 대응</h2>
+  <div class="table-wrap"><table>
+    <tr><th>위험</th><th>왜 위험한가</th><th>대응</th></tr>
+    <tr><td>"둥글면 쉬운 건 당연하다"</td><td>방향만 보이면 기여가 없어 보임</td><td>방향이 아니라 <strong>전환 반경(R*)을 수치로</strong> 제시하고, 기하 예측(Fig. C1)과 시뮬레이션이 맞는지 비교. 예측이 맞으면 설계식이 되고, 틀리면 그 차이가 분석 거리</td></tr>
+    <tr><td>정책 일반화 문제</td><td>날카로운 크레스트로만 학습한 정책은 둥근 크레스트가 처음 보는 지형</td><td>지도의 주 근거는 학습이 없는 고정 자세. PPO는 R을 섞어 재학습해서 비교</td></tr>
+    <tr><td>시드 의존성</td><td>35°에서 PPO 성공률이 시드마다 35~88 %로 갈렸음</td><td>PPO는 시드 3개 이상, 평균 ± 편차 보고. 결론은 고정 자세 결과에 기대고 PPO는 보조로</td></tr>
+    <tr><td>실제 지형 형상 근거 부족</td><td>"실제 크레이터 테두리가 R = 몇 m냐"를 묻기 쉬움</td><td>절대값 대신 <strong>R/L(휠베이스 대비)</strong>로 결과를 제시해, 지형 자료가 생기면 바로 대입할 수 있게 함</td></tr>
+    <tr><td>강체 지형</td><td>레골리스 침하가 없음</td><td>배 걸림은 기하 현상이라 강체에서도 성립. 한계로 명시하고, 결론을 "필요조건"으로 표현</td></tr>
+    <tr><td>돌출부 위치 가정</td><td>기하 예측이 이 가정에 민감</td><td>R = 0 시뮬레이션 결과(27.5° 벽)로 기준을 보정했고, 보정 후 다른 R을 예측하는 구조</td></tr>
+  </table></div>
+
+  <h2><span class="no">06</span>모의 심사 — 국내 학회(KRoC) 기준</h2>
+  <p>ARS 심사 방식(저널 적합성 · 방법론 · 도메인 · 관점 · Devil's Advocate)으로 계획 단계를 점검했습니다. 실험 전이라 증거 항목은 계획 기준으로 판단했습니다.</p>
+  <div class="table-wrap"><table>
+    <tr><th>기준</th><th>판정</th><th>근거</th></tr>
+    <tr><td>독창성</td><td class="n">MEETS</td><td>기존 연구는 일정한 경사나 단일 경사로 형상만 다룸. 크레스트 반경을 변수로 둔 배 걸림 지도는 찾지 못함</td></tr>
+    <tr><td>방법 엄밀성</td><td class="n">MEETS</td><td>학습 없는 고정 자세가 주 근거, 기하 예측과 시뮬레이션의 교차 확인, 조건당 832 에피소드</td></tr>
+    <tr><td>증거 충분성</td><td class="n">PARTLY_MEETS</td><td>실험 전. R 4단계 × 경사 5단계면 지도는 그려지지만 전환점 근처 해상도는 추가 조건이 필요할 수 있음</td></tr>
+    <tr><td>논리 일관성</td><td class="n">MEETS</td><td>"30° 실패 원인은 기하 → 기하 변수를 바꿔 본다"로 질문이 이전 결과에서 바로 이어짐</td></tr>
+    <tr><td>중요성·영향</td><td class="n">MEETS</td><td>경로 계획에 쓸 수 있는 형태(θ × R/L 지도)로 결과가 나옴</td></tr>
+    <tr><td>국내 학회 적합성</td><td class="n">MEETS</td><td>시뮬레이션 기반 분석 + 설계 지침, 2~4쪽 분량에 맞음</td></tr>
+  </table></div>
+  <p><strong>판정:</strong> 실험이 계획대로 끝나면 <strong>Minor revision 수준에서 게재 가능</strong>으로 봅니다. 가장 강한 반론은 "둥글면 쉬운 건 당연하다"이고, 답은 전환 반경 R*의 수치와 기하 예측과의 일치 여부입니다. 실험 결과가 기하 예측과 크게 다르면 논문의 중심이 "왜 다른가(동적 효과)"로 옮겨 가야 합니다.</p>
+
+  <h2><span class="no">07</span>예상 질문과 답변</h2>
+  <div class="table-wrap"><table>
+    <tr><th>질문</th><th>답</th></tr>
+    <tr><td>둥글면 쉬운 건 당연하지 않나?</td><td>방향은 당연하지만, <strong>얼마나 둥글어야 하는지</strong>는 알려져 있지 않았습니다. 이 연구는 그 전환 반경을 R/L로 제시하고 기하 모델로 예측까지 합니다.</td></tr>
+    <tr><td>강화학습이 왜 필요한가?</td><td>지도의 주 근거는 학습이 없는 고정 자세입니다. PPO는 "자세를 바꿀 수 있으면 영역이 얼마나 넓어지는가"를 보는 상한 기준으로만 씁니다.</td></tr>
+    <tr><td>실제 크레이터 테두리는 R이 얼마인가?</td><td>결과를 휠베이스 대비 R/L로 줬기 때문에, 지형 자료에서 크레스트 곡률을 재면 바로 대입할 수 있습니다. 실제 분포 조사는 이 논문의 범위 밖입니다.</td></tr>
+    <tr><td>강체 지형인데 실제와 같나?</td><td>배 걸림은 차체와 지형의 기하로 정해지는 현상이라 강체에서도 성립합니다. 다만 침하가 있으면 지상고가 줄어 벽이 낮아질 수 있으므로 결과를 필요조건으로 씁니다.</td></tr>
+    <tr><td>2-D 기하 모델을 왜 믿나?</td><td>R = 0 시뮬레이션 결과로 기준 하나만 보정하고, 나머지 R은 예측으로 둔 뒤 시뮬레이션으로 확인합니다. 맞으면 설계식, 다르면 동적 효과의 크기를 보여 주는 근거가 됩니다.</td></tr>
+    <tr><td>로버가 바뀌면?</td><td>L(휠베이스), h(지상고), r(휠 반경)만 바꾸면 같은 기하 모델로 다시 예측할 수 있습니다.</td></tr>
+  </table></div>
+
+  <h2><span class="no">08</span>일정</h2>
+  <ol>
+    <li><strong>11/14</strong> — 둥근 크레스트 지형 생성 코드 수정, R = 0에서 이전 결과 재현 확인</li>
+    <li><strong>11/14 밤</strong> — 고정 기본·heave 1.0 평가 40회 (약 3.5시간)</li>
+    <li><strong>11/15~16</strong> — PPO 크레스트 반경 혼합 재학습 시드 3개 + 평가</li>
+    <li><strong>11/17~19</strong> — 지도 작성, 기하 예측과 비교, 전환점 근처 추가 조건</li>
+    <li><strong>11/20~25</strong> — 원고 작성과 지도교수 검토 · <strong>11/26</strong> 제출</li>
+  </ol>
+
+  <hr class="hr">
+  <p class="foot">03의 수치는 2-D 준정적 기하 계산이며, R = 0의 27.5° 벽만 Isaac Sim 5.0 + Isaac Lab 시뮬레이션 실측값입니다. 실물 로버·토양 시험 결과가 아닙니다. 마지막 업데이트 2026.11.13 (계획 단계).</p>
+</div>
+</body>
+</html>
