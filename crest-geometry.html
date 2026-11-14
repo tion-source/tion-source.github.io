@@ -231,7 +231,34 @@
   <ul>
     <li><strong>느릴수록 나빠집니다.</strong> 실패는 거의 모두 시간 초과입니다(R = 2 m, 35°, 0.1 m/s: 넘어짐 3.7 %, 평균 도달 3.4 m). 경사 중간에서 바퀴가 헛돌며(슬립 29 → 49 %) 올라가지 못합니다.</li>
     <li><strong>원인은 마찰 칼날 조건과 관성입니다.</strong> 동마찰 0.70의 한계각이 정확히 35.0°라, 35°에서는 미끄러지기 시작하면 앞으로 미는 마찰과 뒤로 끄는 중력이 같아져 진입 속도가 결과를 정합니다. 날카로운 크레스트에서도 0.4 m/s의 관성이 차체를 넘겨 주던 효과가 저속에서 사라집니다. 쿨롱 마찰 모델에서 나오는 결과이며, 바퀴 모터를 VIPER 사양(200 N·m)으로 강하게 바꿔도 좋아지지 않아(12.7 → 1.2 %) 구동 토크 부족도 아닙니다.</li>
-    <li><strong>결정: 주 결과를 VIPER 최고 속도 0.2 m/s로 다시 측정합니다.</strong> 0.25~0.4 m/s 결과는 속도 민감도로 함께 보고합니다. 실제 로버처럼 느릴수록 크레스트 문제는 더 심각해집니다. 학습 정책도 0.1~0.2 m/s로 다시 학습합니다.</li>
+    <li><strong>결정: 주 결과를 VIPER 최고 속도 0.2 m/s로 다시 측정했습니다(아래).</strong> 0.25~0.4 m/s 결과는 속도 민감도로 함께 보고합니다. 학습 정책은 0.15~0.25 m/s로 다시 학습하는 중입니다.</li>
+  </ul>
+
+  <h3>주 결과: 0.2 m/s에서 다시 측정한 크레스트 지도</h3>
+  <p>속도 명령 0.2 m/s 고정, 에피소드 65 s, 조건당 832 에피소드. 구동 설정은 기본값 그대로입니다.</p>
+  <figure class="fig">
+    <img src="assets/crest-heatmap-v02.png" alt="0.2 m/s에서 경사 x 크레스트 반경 성공률 히트맵">
+    <figcaption><b>Fig. C6</b> 0.2 m/s에서의 성공률. 왼쪽: 고정 기본 자세. 가운데: heave 1.0. 오른쪽: 둘의 차이(%p). 빗금은 측정하지 않은 칸입니다.</figcaption>
+  </figure>
+  <figure class="fig">
+    <img src="assets/crest-wall-v02.png" alt="속도별 50% 성공 경사 비교">
+    <figcaption><b>Fig. C7</b> 고정 기본 자세의 성공률 50 % 경사. 진한 선이 0.2 m/s, 옅은 점선이 0.25~0.4 m/s입니다.</figcaption>
+  </figure>
+  <div class="table-wrap"><table>
+    <tr><th>크레스트 반경</th><th>50 % 경사, 0.2 m/s</th><th>50 % 경사, 0.25~0.4 m/s</th><th>2-D 모델 예측</th></tr>
+    <tr><td>R = 0</td><td class="n">26.6°</td><td class="n">27.0°</td><td class="n">26.6~28.1°</td></tr>
+    <tr><td>R = 0.5 m</td><td class="n">28.3°</td><td class="n">28.5°</td><td class="n">28.9~30.7°</td></tr>
+    <tr><td>R = 1 m</td><td class="n">30.1°</td><td class="n">30.0°</td><td class="n">32.8~35.2°</td></tr>
+    <tr><td>R = 1.5 m</td><td class="n">33.5°</td><td class="n">34.1°</td><td class="n">—</td></tr>
+    <tr><td>R = 2 m</td><td class="n">35° 초과 (35°에서 88.5 %)</td><td class="n">36.2°</td><td class="n">접촉 없음</td></tr>
+  </table></div>
+  <ul>
+    <li><strong>배 걸림 벽은 속도에 거의 무관합니다.</strong> R = 0~1 m에서 50 % 경사가 0.4° 이내로 같고, R = 1.5 m에서 0.6° 내려갑니다. 실패는 넘어짐이 아니라(0~2.3 %) 크레스트 직전 4.9~5.4 m에서의 정지입니다. 벽의 위치를 정하는 것은 크레스트 형상입니다.</li>
+    <li><strong>heave 1.0은 32.5°까지 모든 크레스트를 해결합니다.</strong> 30°·32.5°에서 R에 관계없이 100 %이고, 고정 기본 대비 이득은 R = 0~1 m에서 +49~+100 %p, R = 2 m에서 0입니다.</li>
+    <li><strong>35°에서는 어떤 고정 자세도 50 %를 넘지 못합니다(R ≤ 1.5 m).</strong> heave 1.0은 31.5~48.0 %, 고정 기본은 R = 1.5 m 이하에서 0~43.4 %입니다.</li>
+    <li><strong>필요 없는 곳에서 높이는 손해가 저속에서 더 커집니다.</strong> R = 2 m, 35°에서 고정 기본 88.5 %, heave 48.0 %로 −40 %p입니다(0.25~0.4 m/s에서는 −14 %p).</li>
+    <li><strong>설명되지 않은 점:</strong> R = 1 m에서 35°(8.5 %)가 32.5°(1.9 %)보다 높습니다. 신뢰구간을 넘는 차이이며 원인은 확인하지 못했습니다.</li>
+    <li><strong>남은 것:</strong> 0.2 m/s에서 학습 정책 결과가 아직 없습니다. 35°에서 고정 자세가 모두 막히므로, 자세를 구간별로 바꾸는 정책이 여기서 이득을 내는지가 논문의 마지막 근거가 됩니다.</li>
   </ul>
 
   <h3>요철 강건성</h3>
@@ -327,7 +354,7 @@
   </ol>
 
   <hr class="hr">
-  <p class="foot">03의 수치는 2-D 준정적 기하 계산이고, 04의 수치는 Isaac Sim 5.0 + Isaac Lab 시뮬레이션 실측값입니다. 실물 로버·토양 시험 결과가 아닙니다. 출처: 브레이크오버 각 정의·근사식 — <a href="https://cars-data.com/en/car-glossary/breakover-angle/">cars-data.com</a>, <a href="https://www.jdpower.com/cars/shopping-guides/what-are-approach-breakover-and-departure-angles">J.D. Power</a> (원 정의: SAE J689 / J1100). 04의 시뮬레이션 결과는 진입 속도 0.25~0.4 m/s 기준이며, VIPER 사양 0.2 m/s 재측정이 진행 중입니다. 마지막 업데이트 2026.11.14 (속도·요철·바퀴 하중·CrestMix 결과 추가).</p>
+  <p class="foot">03의 수치는 2-D 준정적 기하 계산이고, 04의 수치는 Isaac Sim 5.0 + Isaac Lab 시뮬레이션 실측값입니다. 실물 로버·토양 시험 결과가 아닙니다. 출처: 브레이크오버 각 정의·근사식 — <a href="https://cars-data.com/en/car-glossary/breakover-angle/">cars-data.com</a>, <a href="https://www.jdpower.com/cars/shopping-guides/what-are-approach-breakover-and-departure-angles">J.D. Power</a> (원 정의: SAE J689 / J1100). 04의 앞부분 결과는 진입 속도 0.25~0.4 m/s 기준이고, 주 결과(Fig. C6, C7)는 VIPER 사양 0.2 m/s 기준입니다. 마지막 업데이트 2026.11.14 (속도·요철·바퀴 하중·CrestMix 결과 추가).</p>
 </div>
 </body>
 </html>
